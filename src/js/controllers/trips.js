@@ -2,7 +2,8 @@ angular
 .module('finalProject')
 .controller('TripsIndexCtrl', TripsIndexCtrl)
 .controller('TripsShowCtrl', TripsShowCtrl)
-.controller('TripsNewCtrl', TripsNewCtrl);
+.controller('TripsNewCtrl', TripsNewCtrl)
+.controller('TripsEditCtrl', TripsEditCtrl);
 
 TripsIndexCtrl.$inject = ['Trip'];
 function TripsIndexCtrl(Trip) {
@@ -53,6 +54,35 @@ function TripsNewCtrl($state, Trip){
       $state.go('tripsIndex');
     });
   }
+
+  function addLeg(){
+    console.log(vm.newLeg);
+    vm.trip.legs.push(vm.newLeg);
+    vm.newLeg = {};
+  }
+  vm.addLeg = addLeg;
+
+  function deleteLeg(leg){
+    const legsIndex = vm.trip.legs.indexOf(leg);
+    vm.trip.legs.splice(legsIndex, 1);
+  }
+  vm.deleteLeg = deleteLeg;
+}
+
+TripsEditCtrl.$inject = ['Trip', '$stateParams', '$state'];
+function TripsEditCtrl(Trip, $stateParams, $state) {
+  const vm = this;
+
+  vm.trip = Trip.get($stateParams);
+
+  function tripsUpdate() {
+    console.log('updating');
+    vm.trip
+    .$update()
+    .then(() => $state.go('tripsShow', $stateParams));
+  }
+
+  vm.update = tripsUpdate;
 
   function addLeg(){
     console.log(vm.newLeg);
