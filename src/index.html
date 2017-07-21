@@ -10,13 +10,15 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body class="container" ui-view>
-  <h1>HELLO DARKNESS</h1>
-  <!-- <ul>
-  <li ng-repeat="user in main.users">
-  <strong>{{ user.username }}</strong>
-  <p><em>{{ user.firstname }} {{ user.lastname }}</em></p>
-</li>
-</ul> -->
+<body>
+  <nav class="navbar navbar-default">
+  <ul class="navbar-left">
+    <li><a ui-sref="tripsIndex">All the trips</a></li>
+    <li><a ui-sref="tripsNew">Create a Trip</a></li>
+  </ul>
+</nav>
+<main class="container" ui-view>
+
+</main>
 </body>
 </html>
