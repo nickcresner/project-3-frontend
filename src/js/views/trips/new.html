@@ -1,0 +1,40 @@
+<h1>O HAI THERE TIS IS MI NEW TRIP</h1>
+
+<form class="col-md-6" ng-submit="tripsNew.create()">
+  <h3>Add a new trip</h3>
+  <div>
+    <label>Name</label>
+    <input class="form-control" type="text" ng-model="tripsNew.trip.name">
+  </div>
+  <div>
+    <label>Country</label>
+    <input class="form-control" type="text" ng-model="tripsNew.trip.country">
+  </div>
+  <div>
+    <label>Info</label>
+    <input class="form-control" type="text" ng-model="tripsNew.trip.info">
+  </div>
+
+
+  <h2>Add Leg to mi trip:</h2>
+<ul>
+  <li ng-repeat="leg in tripsNew.trip.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
+</ul>
+<div class="form-group">
+  <label>Place name: </label>
+  <input class="form-control" ng-model="tripsNew.newLeg.name">
+</div>
+<div class="form-group">
+  <label>Place lat: </label>
+  <input class="form-control" ng-model="tripsNew.newLeg.lat">
+</div>
+<div class="form-group">
+  <label>Place lng: </label>
+  <input class="form-control" ng-model="tripsNew.newLeg.lng">
+</div>
+
+  <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()">Add an item</button><br>
+
+
+  <button>Submit</button>
+</form>
