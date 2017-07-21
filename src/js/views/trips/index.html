@@ -1,0 +1,9 @@
+<h1>O HAI</h1>
+<ul class="row">
+  <li class="col-md-6" ng-repeat="trip in tripsIndex.all">
+    <h3>{{ trip.name }}</h3>
+    <h6>{{ trip.country }}</h6>
+    <a ui-sref="tripsShow({ id: trip.id })">Show mi</a>
+    <button class="btn btn-danger" ng-click="tripsIndex.delete(trip)">X</button>
+  </li>
+</ul>

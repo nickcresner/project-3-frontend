@@ -1,0 +1,6 @@
+<h1>Show Mi Trip</h1>
+<h6>{{ tripsShow.trip.name }}</h6>
+<p>{{ tripsShow.trip.country }}</p>
+<ul>
+  <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }}</li>
+</ul>
