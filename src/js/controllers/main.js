@@ -1,5 +1,5 @@
 angular
-.module('sausageApp')
+.module('finalProject')
 .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$rootScope', '$state', '$auth'];

@@ -1,17 +1,26 @@
-<div class="row">
-  <div class="col-md-6">
-    <form ng-submit="auth.login()">
-      <div>
-        <label>Email</label>
-        <input type="text" ng-model="auth.credentials.email">
-      </div>
+<section class="section">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <form ng-submit="login.submit()">
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <p class="control">
+            <input class="input" type="text" name="email" id="email" ng-model="login.credentials.email">
+          </p>
+        </div>
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <p class="control">
+            <input class="input" type="password" name="password" id="password" ng-model="login.credentials.password">
+          </p>
+        </div>
 
-      <div>
-        <label>Password</label>
-        <input type="password" ng-model="auth.credentials.password">
-      </div>
-
-      <button>Login</button>
-    </form>
+        <div class="field">
+          <p class="control">
+            <input type="submit" class="button is-primary is-fullwidth" value="Login">
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</section>
