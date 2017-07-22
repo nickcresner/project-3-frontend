@@ -8,7 +8,7 @@
   </div>
   <div>
     <label>Country</label>
-    <input class="form-control" type="text" ng-model="tripsNew.trip.country">
+    <input type="text" class="form-control" ng-model="tripsNew.trip.country" name="country">
   </div>
   <div>
     <label>Info</label>
@@ -22,21 +22,15 @@
 
   <h2>Add Leg to mi trip:</h2>
   <p>Mi trip has {{ tripsNew.legs.length }} legs!</p>
-<ul>
-  <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
-</ul>
-<div class="form-group">
-  <label>Place name: </label>
-  <input class="form-control" ng-model="tripsNew.newLeg.name">
-</div>
-<div class="form-group">
-  <label>Place lat: </label>
-  <input class="form-control" ng-model="tripsNew.newLeg.lat">
-</div>
-<div class="form-group">
-  <label>Place lng: </label>
-  <input class="form-control" ng-model="tripsNew.newLeg.lng">
-</div>
+  <ul>
+    <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
+  </ul>
+  <div class="form-group">
+    <label>Place name: </label>
+    <!-- <input class="form-control" ng-model="tripsNew.newLeg.name"> -->
+    <input autocomplete class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
+    {{ tripsNew.newLeg }}
+  </div>
 
   <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()">Add an item</button><br>
 
