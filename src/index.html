@@ -11,15 +11,16 @@
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body>
+<body ng-controller="MainCtrl as main">
   <nav class="navbar navbar-default">
-  <ul class="navbar-left">
-    <li><a ui-sref="tripsIndex">All the trips</a></li>
-    <li><a ui-sref="tripsNew">Create a Trip</a></li>
-  </ul>
-</nav>
-<main class="container" ui-view>
+    <ul class="navbar-left">
+      <li><a ui-sref="tripsIndex">All the trips</a></li>
+      <li><a ui-sref="tripsNew">Create a Trip</a></li>
+      <li><a ng-click="main.logout()" href="#">Logout</a></li>
+    </ul>
+  </nav>
+  <main class="container" ui-view>
 
-</main>
+  </main>
 </body>
 </html>
