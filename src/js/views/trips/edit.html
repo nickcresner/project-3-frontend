@@ -21,22 +21,14 @@
 
 
   <h2>Add Leg to mi trip:</h2>
-  <p>Mi trip has {{ tripsEdit.trip.legs.length }} legs!</p>
-<ul>
-  <li ng-repeat="leg in tripsEdit.trip.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsEdit.deleteLeg(leg)">X</button></li>
-</ul>
-<div class="form-group">
-  <label>Place name: </label>
-  <input class="form-control" ng-model="tripsEdit.newLeg.name">
-</div>
-<div class="form-group">
-  <label>Place lat: </label>
-  <input class="form-control" ng-model="tripsEdit.newLeg.lat">
-</div>
-<div class="form-group">
-  <label>Place lng: </label>
-  <input class="form-control" ng-model="tripsEdit.newLeg.lng">
-</div>
+  <p>Mi trip has {{ tripsEdit.legs.length }} legs!</p>
+  <ul>
+    <li ng-repeat="leg in tripsEdit.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsEdit.deleteLeg(leg)">X</button></li>
+  </ul>
+  <div class="form-group">
+    <label>Place name: </label>
+    <input autocomplete class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
+  </div>
 
   <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()">Add an item</button><br>
 

@@ -13,12 +13,15 @@
 </head>
 <body ng-controller="MainCtrl as main">
   <nav class="navbar navbar-default">
-    <ul class="navbar-left">
+    <ul ng-if="main.isAuthenticated()" class="navbar-left">
       <li><a ui-sref="tripsIndex">All the trips</a></li>
       <li><a ui-sref="tripsNew">Create a Trip</a></li>
       <li><a ng-click="main.logout()" href="#">Logout</a></li>
     </ul>
   </nav>
+  <div class="message" ng-if="main.message">
+    <div class="container">{{main.message}}</div>
+  </div>
   <main class="container" ui-view>
 
   </main>

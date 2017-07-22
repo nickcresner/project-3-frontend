@@ -82,6 +82,7 @@ function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
   const vm = this;
 
   vm.trip = Trip.get($stateParams);
+  console.log(vm.trip);
 
   function tripsUpdate() {
     console.log('updating');
