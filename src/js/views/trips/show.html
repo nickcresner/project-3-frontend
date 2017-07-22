@@ -6,4 +6,3 @@
   <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }}</li>
 </ul>
 <google-map center="{lat: 37.772, lng: -122.214}" legs="tripsShow.trip.legs"></google-map>
-<button class="btn btn-default" ng-click="tripsShow.delete()">Delete</button>

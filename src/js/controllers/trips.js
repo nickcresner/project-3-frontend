@@ -11,22 +11,22 @@ function TripsIndexCtrl(Trip) {
 
   vm.all = Trip.query();
 
-  // vm.delete = tripsDelete;
-  //
-  // function tripsDelete(trip){
-  //
-  //   Trip.delete({ id: trip.id })
-  //   .$promise
-  //   .then(() => {
-  //     const index = vm.all.indexOf(trip);
-  //     vm.all.splice(index, 1);
-  //   });
-  // }
+  vm.delete = tripsDelete;
+
+  function tripsDelete(trip){
+
+    Trip.delete({ id: trip.id })
+    .$promise
+    .then(() => {
+      const index = vm.all.indexOf(trip);
+      vm.all.splice(index, 1);
+    });
+  }
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', '$state'];
-function TripsShowCtrl($stateParams, Trip, $state) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip'];
+function TripsShowCtrl($stateParams, Trip) {
   const vm = this;
   vm.trip = {};
 
@@ -34,13 +34,6 @@ function TripsShowCtrl($stateParams, Trip, $state) {
 
   function tripsShow(){
     vm.trip = Trip.get($stateParams);
-  }
-  vm.delete = tripsDelete;
-
-  function tripsDelete(){
-    vm.trip
-    .$remove()
-    .then(() => $state.go('tripsIndex'));
   }
 }
 
