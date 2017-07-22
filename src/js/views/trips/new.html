@@ -1,37 +1,35 @@
-<h1>O HAI THERE TIS IS MI NEW TRIP</h1>
+<section class="row">
+  <form class="col-md-6" ng-submit="tripsNew.create()">
+    <h3>Add a new trip</h3>
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" type="text" ng-model="tripsNew.trip.name">
+    </div>
+    <div class="form-group">
+      <label>Country</label>
+      <input type="text" class="form-control" ng-model="tripsNew.trip.country" name="country">
+    </div>
+    <div class="form-group">
+      <label>Info</label>
+      <input class="form-control" type="text" ng-model="tripsNew.trip.info">
+    </div>
 
-<form class="col-md-6" ng-submit="tripsNew.create()">
-  <h3>Add a new trip</h3>
-  <div>
-    <label>Name</label>
-    <input class="form-control" type="text" ng-model="tripsNew.trip.name">
-  </div>
-  <div>
-    <label>Country</label>
-    <input type="text" class="form-control" ng-model="tripsNew.trip.country" name="country">
-  </div>
-  <div>
-    <label>Info</label>
-    <input class="form-control" type="text" ng-model="tripsNew.trip.info">
-  </div>
-  <div>
-    <label>User id</label>
-    <input class="form-control" type="number" ng-model="tripsNew.trip.user_id">
-  </div>
+    <h5>Add legs to your trip:</h5>
+    <p>Mi trip has {{ tripsNew.legs.length }} legs!</p>
+    <ul>
+      <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
+    </ul>
+    <div class="form-group">
+      <label>Place name: </label>
+      <input autocomplete class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()">Add a leg</button><br>
+    </div>
 
+    <div class="form-group">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
 
-  <h2>Add Leg to mi trip:</h2>
-  <p>Mi trip has {{ tripsNew.legs.length }} legs!</p>
-  <ul>
-    <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
-  </ul>
-  <div class="form-group">
-    <label>Place name: </label>
-    <input autocomplete class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
-  </div>
-
-  <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()">Add a leg</button><br>
-
-
-  <button>Submit</button>
-</form>
+</section>
