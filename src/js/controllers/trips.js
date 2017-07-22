@@ -37,12 +37,11 @@ function TripsShowCtrl($stateParams, Trip) {
   }
 }
 
-TripsNewCtrl.$inject = ['$state', 'Trip'];
-function TripsNewCtrl($state, Trip){
+TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg'];
+function TripsNewCtrl($state, Trip, Leg){
   const vm = this;
-  vm.trip = {
-    legs: []
-  };
+
+  vm.legs = [];
 
   vm.create = tripsCreate;
 
@@ -50,21 +49,30 @@ function TripsNewCtrl($state, Trip){
     Trip
     .save(vm.trip)
     .$promise
-    .then(() => {
-      $state.go('tripsIndex');
+    .then((trip) => {
+
+      vm.legs.forEach((leg) => {
+        leg.trip_id = trip.id;
+        Leg.
+        save(leg)
+        .$promise
+        .then(() => {
+          $state.go('tripsIndex');
+        });
+      });
     });
   }
 
   function addLeg(){
     console.log(vm.newLeg);
-    vm.trip.legs.push(vm.newLeg);
+    vm.legs.push(vm.newLeg);
     vm.newLeg = {};
   }
   vm.addLeg = addLeg;
 
   function deleteLeg(leg){
-    const legsIndex = vm.trip.legs.indexOf(leg);
-    vm.trip.legs.splice(legsIndex, 1);
+    const legsIndex = vm.legs.indexOf(leg);
+    vm.legs.splice(legsIndex, 1);
   }
   vm.deleteLeg = deleteLeg;
 }

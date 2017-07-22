@@ -21,9 +21,9 @@
 
 
   <h2>Add Leg to mi trip:</h2>
-  <p>Mi trip has {{ tripsNew.trip.legs.length }} legs!</p>
+  <p>Mi trip has {{ tripsNew.legs.length }} legs!</p>
 <ul>
-  <li ng-repeat="leg in tripsNew.trip.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
+  <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} (lat:{{ leg.lat }}, lng:{{ leg.lng}})<button class="btn btn-danger" type="button" ng-click="tripsNew.deleteLeg(leg)">X</button></li>
 </ul>
 <div class="form-group">
   <label>Place name: </label>
