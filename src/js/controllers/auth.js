@@ -27,4 +27,10 @@ function LoginCtrl($auth, $state){
 
   vm.submit =  submit;
 
+  function authenticate(provider) {
+    $auth.authenticate(provider)
+      .then(() => $state.go('tripsIndex'));
+  }
+
+  vm.authenticate = authenticate;
 }
