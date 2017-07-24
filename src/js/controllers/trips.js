@@ -83,6 +83,7 @@ function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
 
   vm.trip = Trip.get($stateParams);
   console.log(vm.trip);
+  console.log(vm.trip.legs);
 
   function tripsUpdate() {
     console.log('updating');
@@ -101,6 +102,7 @@ function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
   vm.addLeg = addLeg;
 
   function deleteLeg(leg){
+    console.log('deleting mi leg');
     const legsIndex = vm.legs.indexOf(leg);
     vm.legs.splice(legsIndex, 1);
   }
