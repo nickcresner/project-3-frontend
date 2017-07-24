@@ -6,3 +6,10 @@
   <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }} <p>Current weather: {{ leg.weather.currently.temperature }} {{ tripsShow.weather.currently.temperature }}</p></li>
 </ul>
 <google-map center="{lat: 37.772, lng: -122.214}" legs="tripsShow.trip.legs"></google-map>
+
+<h5>Who's coming with us:</h5>
+<ul>
+  <li ng-repeat="attendee in tripsShow.trip.attendees">{{ attendee.username }}</li>
+</ul>
+<button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
+<button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
