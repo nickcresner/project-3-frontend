@@ -25,21 +25,48 @@ function TripsIndexCtrl(Trip) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip'];
-function TripsShowCtrl($stateParams, Trip) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', '$auth'];
+function TripsShowCtrl($stateParams, Trip, User, $auth) {
   const vm = this;
   vm.trip = {};
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   tripsShow();
 
   function tripsShow(){
     vm.trip = Trip.get($stateParams);
   }
+
+  function tripsUpdate() {
+    Trip
+    .update({ id: vm.trip.id }, vm.trip);
+  }
+
+  function toggleAttending() {
+    const index = vm.trip.attendee_ids.indexOf(vm.currentUser.id);
+    if(index > -1) {
+      vm.trip.attendee_ids.splice(index, 1);
+      vm.trip.attendees.splice(index, 1);
+    } else {
+      vm.trip.attendee_ids.push(vm.currentUser.id);
+      vm.trip.attendees.push(vm.currentUser);
+    }
+    tripsUpdate();
+  }
+
+  vm.toggleAttending = toggleAttending;
+
+  function isAttending() {
+    return $auth.getPayload() && vm.trip.$resolved && vm.trip.attendee_ids.includes(vm.currentUser.id);
+  }
+
+  vm.isAttending = isAttending;
 }
 
-TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg'];
-function TripsNewCtrl($state, Trip, Leg){
+TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
+function TripsNewCtrl($state, Trip, Leg, User){
   const vm = this;
+  vm.users = User.query();
 
   vm.legs = [];
 
@@ -64,7 +91,6 @@ function TripsNewCtrl($state, Trip, Leg){
   }
 
   function addLeg(){
-    console.log(vm.newLeg);
     vm.legs.push(vm.newLeg);
     vm.newLeg = {};
   }
@@ -77,16 +103,14 @@ function TripsNewCtrl($state, Trip, Leg){
   vm.deleteLeg = deleteLeg;
 }
 
-TripsEditCtrl.$inject = ['Trip', 'Leg', '$stateParams', '$state'];
-function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
+TripsEditCtrl.$inject = ['Trip', 'Leg', 'User', '$stateParams', '$state'];
+function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   const vm = this;
   vm.trip = Trip.get($stateParams);
+  vm.users = User.query();
 
-  console.log(vm.trip);
-  console.log(vm.trip.legs);
 
   function tripsUpdate() {
-    console.log('updating');
     vm.trip
     .$update()
     .then(() => $state.go('tripsShow', $stateParams));
@@ -110,7 +134,6 @@ function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
     Leg.delete({ id: leg.id })
     .$promise
     .then(() => {
-      console.log('deleting mi leg');
       const legsIndex = vm.trip.legs.indexOf(leg);
       vm.trip.legs.splice(legsIndex, 1);
       vm.trip.leg_ids.splice(legsIndex, 1);

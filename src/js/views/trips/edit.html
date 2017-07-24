@@ -20,6 +20,11 @@
     <img ng-src="{{ tripsEdit.trip.base64 }}">
   </div>
 
+  <label for="location">Attendees</label>
+  <label ng-repeat="user in tripsEdit.users">
+    <input type="checkbox" name="attendees" checklist-model="tripsEdit.trip.attendee_ids" checklist-value="user.id"> {{ user.username }}
+  </label>
+
   <h2>Add Leg to mi trip:</h2>
   <p>Mi trip has {{ tripsEdit.trip.legs.length }} legs!</p>
   <ul>
@@ -29,6 +34,7 @@
     <label>Place name: </label>
     <input autocomplete class="form-control" type="text" ng-model="tripsEdit.newLeg.name" lat="tripsEdit.newLeg.lat" lng="tripsEdit.newLeg.lng">
   </div>
+
 
   <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()">Add an item</button><br>
 
