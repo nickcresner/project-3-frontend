@@ -80,8 +80,8 @@ function TripsNewCtrl($state, Trip, Leg){
 TripsEditCtrl.$inject = ['Trip', 'Leg', '$stateParams', '$state'];
 function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
   const vm = this;
-
   vm.trip = Trip.get($stateParams);
+
   console.log(vm.trip);
   console.log(vm.trip.legs);
 
@@ -95,16 +95,27 @@ function TripsEditCtrl(Trip, Leg, $stateParams, $state) {
   vm.update = tripsUpdate;
 
   function addLeg(){
-    console.log(vm.newLeg);
-    vm.legs.push(vm.newLeg);
-    vm.newLeg = {};
+    vm.newLeg.trip_id = vm.trip.id;
+    Leg.
+    save(vm.newLeg)
+    .$promise
+    .then(() => {
+      vm.trip.legs.push(vm.newLeg);
+      vm.newLeg = {};
+    });
   }
   vm.addLeg = addLeg;
 
   function deleteLeg(leg){
-    console.log('deleting mi leg');
-    const legsIndex = vm.legs.indexOf(leg);
-    vm.legs.splice(legsIndex, 1);
+    Leg.delete({ id: leg.id })
+    .$promise
+    .then(() => {
+      console.log('deleting mi leg');
+      const legsIndex = vm.trip.legs.indexOf(leg);
+      vm.trip.legs.splice(legsIndex, 1);
+      vm.trip.leg_ids.splice(legsIndex, 1);
+    });
+
   }
   vm.deleteLeg = deleteLeg;
 }
