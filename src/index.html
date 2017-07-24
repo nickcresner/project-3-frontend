@@ -17,7 +17,7 @@
     <ul ng-if="main.isAuthenticated()" class="navbar-left">
       <li><a ui-sref="tripsIndex">All the trips</a></li>
       <li><a ui-sref="tripsNew">Create a Trip</a></li>
-      <li><a ui-sref="usersShow({ id: main.currentUserId })" ng-if="main.isAuthenticated()">Hello, user!</a></li>
+      <li><a ui-sref="usersShow({ id: main.currentUserId })">Hello, {{ main.currentUser.username }}!</a></li>
       <li><a ng-click="main.logout()" href="#">Logout</a></li>
     </ul>
   </nav>

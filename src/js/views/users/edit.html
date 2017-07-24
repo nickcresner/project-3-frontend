@@ -1,7 +1,22 @@
-<h1>edit mi user</h1>
 
-<div class="form-group">
-  <label for="base64">Image</label>
-  <input type="file" base64 name="base64" id="base64" ng-model="usersEdit.trip.base64">
-  <img ng-src="{{ usersEdit.trip.base64 }}">
-</div>
+<!DOCTYPE html>
+
+<h1>Edit mi user</h1>
+
+<section>
+  <div class="row">
+    <form class="col-lg-4" ng-submit="usersEdit.update()" name="usersEdit.userForm" novalidate>
+      <div class="form-group">
+        <label for="base64">Image</label>
+        <input type="file" base64 name="base64" id="base64" ng-model="usersEdit.trip.base64">
+        <img ng-src="{{ usersEdit.trip.base64 }}">
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="input form-control" id="username" name="username" ng-model="usersEdit.user.username" value="{{ usersEdit.user.username }}">
+      </div>
+      <button type="submit" class="btn btn-default">Update</button>
+    </form>
+  </div>
+
+</section>
