@@ -1,7 +1,5 @@
-<h1>EDIT MI</h1>
-
 <form class="col-md-6" ng-submit="tripsEdit.update()">
-  <h3>Add a new trip</h3>
+  <h3>Edit '{{ tripsEdit.trip.name }}' trip</h3>
   <div>
     <label>Name</label>
     <input class="form-control" type="text" ng-model="tripsEdit.trip.name">
@@ -16,7 +14,7 @@
   </div>
   <div class="form-group">
     <label for="base64">Image</label>
-    <input type="file" base64 name="base64" id="base64" ng-model="tripsEdit.trip.base64">
+    <input  class="form-control" type="file" base64 name="base64" id="base64" ng-model="tripsEdit.trip.base64">
     <img ng-src="{{ tripsEdit.trip.base64 }}">
   </div>
 
@@ -35,9 +33,10 @@
     <input autocomplete class="form-control" type="text" ng-model="tripsEdit.newLeg.name" lat="tripsEdit.newLeg.lat" lng="tripsEdit.newLeg.lng">
   </div>
 
-
-  <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()">Add an item</button><br>
-
-
-  <button>Submit</button>
+  <div class="form-group">
+    <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()">Add an item</button><br>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary">Submit</button>
+  </div>
 </form>
