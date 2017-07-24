@@ -120,11 +120,14 @@ function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
 
   function addLeg(){
     vm.newLeg.trip_id = vm.trip.id;
+    console.log('About to add:', vm.newLeg);
     Leg.
     save(vm.newLeg)
     .$promise
-    .then(() => {
-      vm.trip.legs.push(vm.newLeg);
+    .then((leg) => {
+      console.log('Leg added:', leg);
+      vm.trip.legs.push(leg);
+      vm.trip.leg_ids.push(leg.id);
       vm.newLeg = {};
     });
   }

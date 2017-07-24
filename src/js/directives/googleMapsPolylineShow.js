@@ -20,8 +20,6 @@ function googleMap() {
       scope.$on('$destroy', destroyMap);
 
       function initMap(){
-        console.log(scope.legs);
-        console.log(scope.center);
         var bounds = new google.maps.LatLngBounds();
 
         if(!scope.legs) return false;
@@ -40,7 +38,6 @@ function googleMap() {
           bounds.extend(latLng);
           legs.push(latLng);
         });
-        console.log(legs);
         var flightPath = new google.maps.Polyline({
           path: legs,
           geodesic: true,
