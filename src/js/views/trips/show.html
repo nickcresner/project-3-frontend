@@ -1,6 +1,7 @@
 <h4>{{ tripsShow.trip.name }}</h4>
 <p>{{ tripsShow.trip.country }}</p>
 <p>{{ tripsShow.trip.info }}</p>
+<img ng-src="{{ tripsShow.trip.image_src }}">
 <ul>
   <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }}</li>
 </ul>
