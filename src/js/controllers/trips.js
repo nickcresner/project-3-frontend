@@ -25,16 +25,42 @@ function TripsIndexCtrl(Trip) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip'];
-function TripsShowCtrl($stateParams, Trip) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'weather'];
+function TripsShowCtrl($stateParams, Trip, weather) {
   const vm = this;
   vm.trip = {};
 
-  tripsShow();
+  Trip.get($stateParams)
+    .$promise
+    .then((trip) => {
+      vm.trip = trip;
+      vm.trip.legs = vm.trip.legs.map(legWeather);
+    });
 
-  function tripsShow(){
-    vm.trip = Trip.get($stateParams);
+  function legWeather(leg) {
+    weather.getWeather()
+      .then((response) => {
+        leg.weather = response;
+      });
+
+    return leg;
   }
+
+  // console.log(legWeather({lat: 51, lng: -0.1}));
+
+  // vm.legWeather = legWeather;
+
+  // function getWeather(vm.trip.legs.lat, vm.trip.legs.lng) {
+  //
+  // }
+  //
+  // weather.getWeather(vm.trip.leg.lat, vm.trip.leg.lng);
+  // .then((weather) => {
+  //   vm.weather = weather;
+  // });
+  //
+  // console.log(weather.getWeather());
+
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg'];
