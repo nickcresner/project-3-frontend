@@ -1,1 +1,7 @@
 <h1>edit mi user</h1>
+
+<div class="form-group">
+  <label for="base64">Image</label>
+  <input type="file" base64 name="base64" id="base64" ng-model="usersEdit.trip.base64">
+  <img ng-src="{{ usersEdit.trip.base64 }}">
+</div>
