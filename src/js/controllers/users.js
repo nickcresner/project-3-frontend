@@ -4,17 +4,11 @@ angular
 .controller('UsersEditCtrl', UsersEditCtrl);
 
 
-UsersShowCtrl.$inject = ['$auth', 'User', '$state', '$stateParams'];
-function UsersShowCtrl($auth, User, $state, $stateParams) {
+UsersShowCtrl.$inject = ['$auth', 'User', '$state'];
+function UsersShowCtrl($auth, User, $state) {
 
   const vm = this;
-  vm.user = {};
-
-  usersShow();
-
-  function usersShow(){
-    vm.user = User.get($stateParams);
-  }
+  vm.user = User.get($state.params);
 }
 
 
@@ -23,13 +17,11 @@ function UsersEditCtrl(User, $stateParams, $state) {
   const vm = this;
 
   vm.user = User.get($stateParams);
-  console.log(vm.user, 'here');
+  console.log(vm.user);
   function usersUpdate() {
-    if (vm.userForm.$valid) {
-      vm.user
-      .$update()
-      .then(() => $state.go('usersShow', $stateParams));
-    }
+    vm.user
+    .$update()
+    .then(() => $state.go('usersShow', $stateParams));
   }
 
   vm.update = usersUpdate;
