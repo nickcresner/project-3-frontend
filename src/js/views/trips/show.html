@@ -1,5 +1,6 @@
 <h4>{{ tripsShow.trip.name }}</h4>
 <p>{{ tripsShow.trip.country }}</p>
+<p>Created by: <strong><a ui-sref="usersShow({ id: tripsShow.trip.user.id })">{{ tripsShow.trip.user.username }}</a></strong></p>
 <p>{{ tripsShow.trip.info }}</p>
 <img ng-src="{{ tripsShow.trip.image_src }}">
 <ul>
@@ -9,7 +10,7 @@
 
 <h5>Who's coming with us:</h5>
 <ul>
-  <li ng-repeat="attendee in tripsShow.trip.attendees">{{ attendee.username }}</li>
+  <li ng-repeat="attendee in tripsShow.trip.attendees"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></li>
 </ul>
 <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
 <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
