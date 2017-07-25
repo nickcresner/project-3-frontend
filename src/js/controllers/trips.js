@@ -85,7 +85,6 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
 
   vm.isAttending = isAttending;
 
-
   function addComment() {
     vm.comment.trip_id = vm.trip.id;
 
@@ -111,6 +110,7 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
   }
 
   vm.deleteComment = deleteComment;
+
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
