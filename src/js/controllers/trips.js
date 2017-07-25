@@ -5,11 +5,14 @@ angular
 .controller('TripsNewCtrl', TripsNewCtrl)
 .controller('TripsEditCtrl', TripsEditCtrl);
 
-TripsIndexCtrl.$inject = ['Trip'];
-function TripsIndexCtrl(Trip) {
+TripsIndexCtrl.$inject = ['Trip', 'filterFilter', '$scope'];
+function TripsIndexCtrl(Trip, filterFilter, $scope) {
   const vm = this;
 
-  vm.all = Trip.query();
+  Trip.query((trips) => {
+    vm.all = trips;
+    filterTrips();
+  });
 
   vm.delete = tripsDelete;
 
@@ -22,6 +25,15 @@ function TripsIndexCtrl(Trip) {
       vm.all.splice(index, 1);
     });
   }
+  function filterTrips(){
+    const params = { name: vm.q };
+
+    vm.filtered = filterFilter(vm.all, params);
+
+  }
+  $scope.$watchGroup([
+    () => vm.q
+  ], filterTrips);
 
 }
 
@@ -32,18 +44,18 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   Trip.get($stateParams)
-    .$promise
-    .then((trip) => {
-      vm.trip = trip;
-      vm.trip.legs = vm.trip.legs.map(legWeather);
-    });
+  .$promise
+  .then((trip) => {
+    vm.trip = trip;
+    vm.trip.legs = vm.trip.legs.map(legWeather);
+  });
 
   function legWeather(leg) {
     weather.getWeather(leg.lat, leg.lng)
-      .then((response) => {
-        leg.weather = response;
-        console.log(response);
-      });
+    .then((response) => {
+      leg.weather = response;
+      console.log(response);
+    });
 
     return leg;
   }
@@ -72,8 +84,7 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
   }
 
   vm.isAttending = isAttending;
-<<<<<<< HEAD
-=======
+
 
   function addComment() {
     vm.comment.trip_id = vm.trip.id;
@@ -100,9 +111,6 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
   }
 
   vm.deleteComment = deleteComment;
-
-
->>>>>>> development
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];

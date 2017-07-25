@@ -1,6 +1,8 @@
 <section>
+
+  <input type="text" ng-model="tripsIndex.q" placeholder="Search for an adventure..">
   <div class="row">
-    <div class="col-md-6 col-lg-4" ng-repeat="trip in tripsIndex.all">
+    <div class="col-md-6 col-lg-4" ng-repeat="trip in tripsIndex.filtered">
       <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
         <a ui-sref="tripsShow({ id: trip.id })">
           <h3>{{ trip.name }}</h3>
