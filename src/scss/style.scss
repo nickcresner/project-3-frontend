@@ -1,9 +1,11 @@
 // Import all of your scss files here
+$primary: #12A4C9;
 .map {
   height: 250px;
   background-color: ghostwhite;
   width: 50%;
   float: right;
+  border-radius: 5px;
 }
 
 body{
@@ -15,5 +17,55 @@ body{
   }
   ul{
     list-style: none;
+  }
+  section{
+    margin-top: 50px;
+  }
+  h3{
+    font-size: 24px;
+    font-weight: 300;
+  }
+}
+nav{
+  text-align: left;
+  padding: 0;
+  .nav-left{
+    float: right;
+    margin-right: 20px;
+  }
+  ul{
+    padding: 0;
+    height: 50px;
+    li{
+      display: inline;
+      line-height: 50px;
+      margin-left: 20px;
+      a{
+        color: #000;
+      }
+      a:hover, a:active, a:visited, a:link{
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
+}
+.trip-index{
+  border: 2px solid $primary;
+  width: 98%;
+  height: 300px;
+  margin-top: 40px;
+  background-size: cover;
+  background-position: center;
+  a{
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  a:hover{
+    color: #fff;
+    text-decoration: none;
   }
 }
