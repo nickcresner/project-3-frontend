@@ -9,16 +9,19 @@
   <!-- inject:js -->
   <!-- endinject -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
   <!-- inject:css -->
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav class="navbar navbar-default">
-    <ul ng-if="main.isAuthenticated()" class="navbar-left">
+  <nav>
+    <ul ng-if="main.isAuthenticated()">
       <li><a ui-sref="tripsIndex">All the trips</a></li>
       <li><a ui-sref="tripsNew">Create a Trip</a></li>
-      <li><a ui-sref="usersShow({ id: main.currentUserId })">Hello, {{ main.currentUser.username }}!</a></li>
-      <li><a ng-click="main.logout()" href="#">Logout</a></li>
+      <div class="nav-left">
+        <li><a ui-sref="usersShow({ id: main.currentUserId })">Hello, {{ main.currentUser.username }}!</a></li>
+        <li><a ng-click="main.logout()" href="#">Logout</a></li>
+      </div>
     </ul>
   </nav>
   <div class="message" ng-if="main.message">

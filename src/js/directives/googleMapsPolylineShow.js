@@ -16,8 +16,11 @@ function googleMap() {
 
       let map = null;
       let marker = null;
+      let legsMarkers = [];
+      let infowindow = null;
       scope.$watch('legs', initMap);
       scope.$on('$destroy', destroyMap);
+      scope.$watch('legs', addLegsMarkers, true);
 
       function initMap(){
         var bounds = new google.maps.LatLngBounds();
@@ -26,11 +29,111 @@ function googleMap() {
         map = new google.maps.Map(element[0], {
           scrollwheel: false,
           zoom: 4,
-          center: scope.center
-        });
-        marker = new google.maps.Marker({
-          position: scope.center,
-          map
+          center: scope.center,
+          styles: [
+            {
+              'featureType': 'landscape',
+              'stylers': [
+                {
+                  'hue': '#FFBB00'
+                },
+                {
+                  'saturation': 43.400000000000006
+                },
+                {
+                  'lightness': 37.599999999999994
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            },
+            {
+              'featureType': 'road.highway',
+              'stylers': [
+                {
+                  'hue': '#FFC200'
+                },
+                {
+                  'saturation': -61.8
+                },
+                {
+                  'lightness': 45.599999999999994
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            },
+            {
+              'featureType': 'road.arterial',
+              'stylers': [
+                {
+                  'hue': '#FF0300'
+                },
+                {
+                  'saturation': -100
+                },
+                {
+                  'lightness': 51.19999999999999
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            },
+            {
+              'featureType': 'road.local',
+              'stylers': [
+                {
+                  'hue': '#FF0300'
+                },
+                {
+                  'saturation': -100
+                },
+                {
+                  'lightness': 52
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            },
+            {
+              'featureType': 'water',
+              'stylers': [
+                {
+                  'hue': '#0078FF'
+                },
+                {
+                  'saturation': -13.200000000000003
+                },
+                {
+                  'lightness': 2.4000000000000057
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            },
+            {
+              'featureType': 'poi',
+              'stylers': [
+                {
+                  'hue': '#00FF6A'
+                },
+                {
+                  'saturation': -1.0989010989011234
+                },
+                {
+                  'lightness': 11.200000000000017
+                },
+                {
+                  'gamma': 1
+                }
+              ]
+            }
+          ]
         });
         var legs = [];
         scope.legs.forEach((leg) => {
@@ -49,6 +152,48 @@ function googleMap() {
         flightPath.setMap(map);
         map.fitBounds(bounds);
       }
+
+      function addLegsMarkers(legs) {
+        if(!legs) return false;
+        removeLegsMarkers();
+
+        legs.forEach((leg) => {
+          addLegMarker(leg);
+        });
+      }
+
+      function addLegMarker(leg) {
+        console.log(leg.lat, leg.lng);
+        const marker = new google.maps.Marker({
+          position: {lat: leg.lat, lng: leg.lng },
+          map
+        });
+
+        legsMarkers.push(marker);
+
+        marker.addListener('click', () => {
+          markerLegClick(marker, leg);
+        });
+      }
+      function markerLegClick(marker, leg) {
+        if(infowindow) infowindow.close();
+
+        const name = leg.name;
+
+        infowindow = new google.maps.InfoWindow({
+          content: `${name}`,
+          pixelOffset: new google.maps.Size(0, 13)
+
+        });
+        infowindow.open(map, marker);
+      }
+      function removeLegsMarkers(){
+        legsMarkers.forEach((marker) => {
+          marker.setMap(null);
+        });
+        legsMarkers = [];
+      }
+
       function destroyMap(){
         console.log('destroying map...');
         marker.setMap(null);
