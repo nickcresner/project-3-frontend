@@ -47,7 +47,6 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
     return leg;
   }
 
-<<<<<<< HEAD
   // console.log(legWeather({lat: 51, lng: -0.1}));
 
   // vm.legWeather = legWeather;
@@ -63,7 +62,7 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
   //
   // console.log(weather.getWeather());
 
-=======
+
   function tripsUpdate() {
     Trip
     .update({ id: vm.trip.id }, vm.trip);
@@ -88,7 +87,6 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
   }
 
   vm.isAttending = isAttending;
->>>>>>> development
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
