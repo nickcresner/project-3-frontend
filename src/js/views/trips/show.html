@@ -3,7 +3,7 @@
 <p>{{ tripsShow.trip.info }}</p>
 <img ng-src="{{ tripsShow.trip.image_src }}">
 <ul>
-  <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }} <p>Current weather: {{ leg.weather.currently.temperature }} {{ tripsShow.weather.currently.temperature }}</p></li>
+  <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }} <p>Current weather: {{ leg.weather.currently.temperature }} {{ leg.lat }}</p></li>
 </ul>
 <google-map center="{lat: 37.772, lng: -122.214}" legs="tripsShow.trip.legs"></google-map>
 
@@ -13,3 +13,4 @@
 </ul>
 <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
 <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
+  

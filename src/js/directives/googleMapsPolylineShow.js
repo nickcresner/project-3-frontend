@@ -39,10 +39,7 @@ function googleMap() {
           bounds.extend(latLng);
           legs.push(latLng);
         });
-<<<<<<< HEAD
-        // console.log(legs);
-=======
->>>>>>> development
+        
         var flightPath = new google.maps.Polyline({
           path: legs,
           geodesic: true,
