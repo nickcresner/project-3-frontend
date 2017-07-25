@@ -60,6 +60,8 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
     return leg;
   }
 
+
+
   function tripsUpdate() {
     Trip
     .update({ id: vm.trip.id }, vm.trip);
