@@ -10,7 +10,6 @@ function Weather($http, API_URL) {
     return $http
       .get(`${API_URL}/weather`, { params: { lat, lng } })
       .then((response) => {
-        console.log('response data', response);
         return response.data;
       });
   }
