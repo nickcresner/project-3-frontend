@@ -37,26 +37,34 @@ function TripsIndexCtrl(Trip, filterFilter, $scope) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather'];
-function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather', 'budget'];
+function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget) {
   const vm = this;
   vm.trip = {};
-  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id }); 
 
   Trip.get($stateParams)
   .$promise
   .then((trip) => {
     vm.trip = trip;
     vm.trip.legs = vm.trip.legs.map(legWeather);
+    vm.trip.leg = countryBudget(vm.trip.legs[0]);
   });
 
   function legWeather(leg) {
     weather.getWeather(leg.lat, leg.lng)
     .then((response) => {
       leg.weather = response;
+    });
+    return leg;
+  }
+
+  function countryBudget(leg){
+    budget.getBudget(leg.lat, leg.lng)
+    .then((response) => {
+      leg.budget = response;
       console.log(response);
     });
-
     return leg;
   }
 

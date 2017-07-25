@@ -142,7 +142,7 @@ function googleMap() {
           bounds.extend(latLng);
           legs.push(latLng);
         });
-        
+
         var flightPath = new google.maps.Polyline({
           path: legs,
           geodesic: true,
@@ -165,7 +165,6 @@ function googleMap() {
       }
 
       function addLegMarker(leg) {
-        console.log(leg.lat, leg.lng);
         const marker = new google.maps.Marker({
           position: {lat: leg.lat, lng: leg.lng },
           map
