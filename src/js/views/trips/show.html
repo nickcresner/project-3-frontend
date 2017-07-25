@@ -3,7 +3,7 @@
 <p>{{ tripsShow.trip.info }}</p>
 <img ng-src="{{ tripsShow.trip.image_src }}">
 <ul>
-  <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }}</li>
+  <li ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} | lat: {{ leg.lat }} lng: {{ leg.lng }} <p>Current weather: {{ leg.weather.currently.temperature }} {{ tripsShow.weather.currently.temperature }}</p></li>
 </ul>
 <google-map legs="tripsShow.trip.legs"></google-map>
 

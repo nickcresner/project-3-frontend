@@ -22,9 +22,9 @@ function autocomplete() {
         const place = autocomplete.getPlace();
         scope.lat = place.geometry.location.toJSON().lat;
         scope.lng = place.geometry.location.toJSON().lng;
-        console.log(place);
-        console.log(place.geometry.location.lat());
-        console.log(place.geometry.location.lng());
+        // console.log(place);
+        // console.log(place.geometry.location.lat());
+        // console.log(place.geometry.location.lng());
         model.$setViewValue(element.val());
         scope.$apply();
       });

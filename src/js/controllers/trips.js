@@ -25,18 +25,45 @@ function TripsIndexCtrl(Trip) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', '$auth'];
-function TripsShowCtrl($stateParams, Trip, User, $auth) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', '$auth', 'weather'];
+function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
   const vm = this;
   vm.trip = {};
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-  tripsShow();
+  Trip.get($stateParams)
+    .$promise
+    .then((trip) => {
+      vm.trip = trip;
+      vm.trip.legs = vm.trip.legs.map(legWeather);
+    });
 
-  function tripsShow(){
-    vm.trip = Trip.get($stateParams);
+  function legWeather(leg) {
+    weather.getWeather()
+      .then((response) => {
+        leg.weather = response;
+      });
+
+    return leg;
   }
 
+<<<<<<< HEAD
+  // console.log(legWeather({lat: 51, lng: -0.1}));
+
+  // vm.legWeather = legWeather;
+
+  // function getWeather(vm.trip.legs.lat, vm.trip.legs.lng) {
+  //
+  // }
+  //
+  // weather.getWeather(vm.trip.leg.lat, vm.trip.leg.lng);
+  // .then((weather) => {
+  //   vm.weather = weather;
+  // });
+  //
+  // console.log(weather.getWeather());
+
+=======
   function tripsUpdate() {
     Trip
     .update({ id: vm.trip.id }, vm.trip);
@@ -61,6 +88,7 @@ function TripsShowCtrl($stateParams, Trip, User, $auth) {
   }
 
   vm.isAttending = isAttending;
+>>>>>>> development
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
