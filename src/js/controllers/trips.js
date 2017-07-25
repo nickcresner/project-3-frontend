@@ -25,8 +25,8 @@ function TripsIndexCtrl(Trip) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', '$auth', 'weather'];
-function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather'];
+function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather) {
   const vm = this;
   vm.trip = {};
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
@@ -47,7 +47,6 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
 
     return leg;
   }
-
 
   function tripsUpdate() {
     Trip
@@ -73,6 +72,37 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
   }
 
   vm.isAttending = isAttending;
+<<<<<<< HEAD
+=======
+
+  function addComment() {
+    vm.comment.trip_id = vm.trip.id;
+
+    Comment
+    .save(vm.comment)
+    .$promise
+    .then((comment) => {
+      vm.trip.comments.push(comment);
+      vm.comment = {};
+    });
+  }
+
+  vm.addComment = addComment;
+
+  function deleteComment(comment) {
+    Comment
+    .delete({ id: comment.id })
+    .$promise
+    .then(() => {
+      const index = vm.trip.comments.indexOf(comment);
+      vm.trip.comments.splice(index, 1);
+    });
+  }
+
+  vm.deleteComment = deleteComment;
+
+
+>>>>>>> development
 }
 
 TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
