@@ -39,7 +39,7 @@ function TripsShowCtrl($stateParams, Trip, User, $auth, weather) {
     });
 
   function legWeather(leg) {
-    weather.getWeather()
+    weather.getWeather(leg.lat, leg.lng)
       .then((response) => {
         leg.weather = response;
         console.log(response);
