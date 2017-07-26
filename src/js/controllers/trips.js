@@ -14,17 +14,6 @@ function TripsIndexCtrl(Trip, filterFilter, $scope) {
     filterTrips();
   });
 
-  vm.delete = tripsDelete;
-
-  function tripsDelete(trip){
-
-    Trip.delete({ id: trip.id })
-    .$promise
-    .then(() => {
-      const index = vm.all.indexOf(trip);
-      vm.all.splice(index, 1);
-    });
-  }
   function filterTrips(){
     const params = { name: vm.q };
 
@@ -37,11 +26,11 @@ function TripsIndexCtrl(Trip, filterFilter, $scope) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather', 'budget'];
-function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather', 'budget', '$state'];
+function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget, $state) {
   const vm = this;
   vm.trip = {};
-  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id }); 
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   Trip.get($stateParams)
   .$promise
@@ -50,6 +39,14 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
     vm.trip.legs = vm.trip.legs.map(legWeather);
     vm.trip.leg = countryBudget(vm.trip.legs[0]);
   });
+
+  function tripsDelete() {
+    vm.trip
+    .$remove()
+    .then(() => $state.go('tripsIndex'));
+  }
+
+  vm.delete = tripsDelete;
 
   function legWeather(leg) {
     weather.getWeather(leg.lat, leg.lng)
