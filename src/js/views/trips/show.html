@@ -42,14 +42,16 @@
     </div>
     <div class="col-lg-5">
       <h5>Comments</h5>
-      <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
-        <div class="col-3 user-details">
-          <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
-          <p><small>{{ comment.user.username }}</small></p>
-        </div>
-        <div class="col-9 comment-content">
-          <p>{{ comment.body }}</p>
-          <button class="btn delete-comment" ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+      <div class="comments">
+        <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
+          <div class="col-3 user-details">
+            <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
+            <p><small>{{ comment.user.username }}</small></p>
+          </div>
+          <div class="col-9 comment-content">
+            <p>{{ comment.body }}</p>
+            <button class="btn delete-comment" ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
         </div>
       </div>
     </div>

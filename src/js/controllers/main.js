@@ -16,12 +16,17 @@ function MainCtrl($rootScope, $state, $auth, $transitions, User) {
   });
 
   const protectedStates = ['tripsNew', 'tripsEdit', 'tripsIndex', 'tripsShow'];
+  const editPage = 'tripsEdit';
 
   $transitions.onSuccess({}, (transition) => {
     if((!$auth.isAuthenticated() && protectedStates.includes(transition.$to().name))) {
       vm.message = 'You must be logged in to access this page.';
       return $state.go('login');
     }
+    // if(($auth.isAuthenticated() && $auth.getPayload().id !== tripsShow.trip.user.id && editPage.includes(transition.$to().name))){
+    //   vm.message = 'This is not your source, you cannot edit this.';
+    //   return $state.go('tripsIndex');
+    // }
     vm.pageName = transition.$to().name;
     if(vm.stateHasChanged) vm.message = null;
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
