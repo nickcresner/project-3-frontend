@@ -22,8 +22,13 @@
       <li><a ui-sref="tripsIndex"><i class="fa fa-globe" aria-hidden="true"></i> All the trips</a></li>
       <li><a ui-sref="tripsNew"><i class="fa fa-suitcase" aria-hidden="true"></i> Create a Trip</a></li>
       <div class="nav-left">
+<<<<<<< HEAD
         <li><a ui-sref="usersShow({ id: main.currentUserId })">Hello, {{ main.currentUser.username }}!</a></li>
         <li><a ng-click="main.logout()" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+=======
+        <li><a ui-sref="usersShow({ id: main.currentUserId })">Hello, {{ main.currentUser.username }}! <img height="50px" ng-src="{{ main.currentUser.image_src }}" alt=""></a></li>
+        <li><a ng-click="main.logout()" href="#">Logout</a></li>
+>>>>>>> development
       </div>
     </ul>
   </nav>
