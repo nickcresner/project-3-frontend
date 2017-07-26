@@ -1,7 +1,8 @@
 <h4>Hello, I am {{ usersShow.user.username }}!</h4>
 <img ng-src="{{ usersShow.user.image_src }}">
-<p>{{ usersShow.user.firstname }} {{ usersShow.user.lastname }}</p>
-<p>{{ usersShow.user.email }}</p>
-<p>{{ usersShow.user.bio }}</p>
+<p><strong>Full name: </strong>{{ usersShow.user.firstname }} {{ usersShow.user.lastname }}</p>
+<p><strong>Email: </strong>{{ usersShow.user.email }}</p>
+<p><strong>Bio: </strong><br>
+{{ usersShow.user.bio }}</p>
 
 <button ng-if="main.isAuthenticated() && main.currentUserId === usersShow.user.id"  class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
