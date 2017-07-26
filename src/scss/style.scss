@@ -10,11 +10,11 @@ body{
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+  .form-control{
+    border: 1px solid $primary;
+  }
   form{
     margin: 0 auto;
-    .form-control{
-      border: 1px solid $primary;
-    }
   }
   ul{
     list-style: none;

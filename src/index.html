@@ -19,6 +19,7 @@
 <body ng-controller="MainCtrl as main">
   <nav>
     <ul ng-if="main.isAuthenticated()">
+      <li><img src="./images/043-planet-earth.png" height="40px"></li>
       <li><a ui-sref="tripsIndex"><i class="fa fa-globe" aria-hidden="true"></i> All the trips</a></li>
       <li><a ui-sref="tripsNew"><i class="fa fa-suitcase" aria-hidden="true"></i> Create a Trip</a></li>
       <div class="nav-left">
@@ -28,7 +29,6 @@
       </div>
     </ul>
   </nav>
-
   <div class="message" ng-if="main.message">
     <div class="container">{{main.message}}</div>
   </div>

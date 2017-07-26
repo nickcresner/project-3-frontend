@@ -6,6 +6,8 @@
       <h3>{{ tripsShow.trip.country }}</h3>
       <p>From {{ tripsShow.trip.start_date }} to {{ tripsShow.trip.end_date }}</p>
       <p>Created by: <strong><a ui-sref="usersShow({ id: tripsShow.trip.user.id })">{{ tripsShow.trip.user.username }}</a></strong></p>
+      <button class="btn btn-danger" ng-click="tripsShow.delete()">Delete</button>
+      <button class="btn btn-primary" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</button>
     </div>
   </div>
 </div>
@@ -38,11 +40,6 @@
     </div>
     <div class="col-lg-5">
       <h5>Comments</h5>
-      <!-- <div class="row comment">
-        <p ng-repeat="comment in tripsShow.trip.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></p>
-      </div> -->
-
-
       <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
         <div class="col-xs-3 user-details">
           <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
@@ -53,9 +50,6 @@
           <button class="btn delete-comment" ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id"><i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>
       </div>
-
-
-
 
     </div>
     <div class="col-lg-3">

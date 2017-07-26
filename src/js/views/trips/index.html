@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <section class="container">
 
-  <input type="text" ng-model="tripsIndex.q" placeholder="Search by name..">
+  <input type="text" class="form-control" ng-model="tripsIndex.q" placeholder="Search by name..">
   <div class="row">
     <div class="col-md-6 col-lg-4" ng-repeat="trip in tripsIndex.filtered">
       <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
@@ -9,8 +9,6 @@
           <h3>{{ trip.name }}</h3>
           <h6>{{ trip.country }}</h6>
         </a>
-        <button class="btn btn-danger" ng-click="tripsIndex.delete(trip)">X</button>
-        <button class="btn btn-primary" ui-sref="tripsEdit({ id: trip.id })">Edit</button>
       </div>
     </div>
   </div>
