@@ -21,15 +21,17 @@ function LoginCtrl($auth, $state){
   vm.credentials = {};
 
   function submit(){
-    $auth.login(vm.credentials)
-    .then(() => $state.go('tripsIndex'));
+    if(vm.loginForm.$valid){
+      $auth.login(vm.credentials)
+      .then(() => $state.go('tripsIndex'));
+    }
   }
 
   vm.submit =  submit;
 
   function authenticate(provider) {
     $auth.authenticate(provider)
-      .then(() => $state.go('tripsIndex'));
+    .then(() => $state.go('tripsIndex'));
   }
 
   vm.authenticate = authenticate;
