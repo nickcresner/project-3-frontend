@@ -10,11 +10,9 @@ function Budget($http, API_URL) {
     return $http
       .get(`${API_URL}/budget`, { params: { lat, lng } })
       .then((response) => {
-        console.log(response.data);
         return response.data;
       });
   }
-  // console.log(vm.trip.legs);
   vm.getBudget = getBudget;
 
 }
