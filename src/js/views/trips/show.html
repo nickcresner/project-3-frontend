@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <div class="row">
   <div class="col-md-12 col-sm-12 image-show-box" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url({{ tripsShow.trip.image_src }})">
     <div class="image-show-box-text">
@@ -65,8 +66,10 @@
     </div>
     <div class="col-lg-4">
       <h5>Weather</h5>
+
       <div>
-        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103; {{ leg.weather.currently.summary }}</p>
+        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103;  <img height="50px" ng-src="/images/{{ leg.weather.currently.icon }}.png"></p>
+
       </div>
     </div>
     <div class="col-lg-4">
