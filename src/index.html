@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Angular Stack Setup</title>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChdIl5vwLjGfnKOZYNym05H1KD007m7-o&libraries=geometry,places"></script>
+  <script src="https://use.fontawesome.com/9c2082c665.js"></script>
   <!-- inject:js -->
   <!-- endinject -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Lora|Poppins:300,400|Quicksand" rel="stylesheet">  <!-- inject:css -->
+  <link href="https://fonts.googleapis.com/css?family=Lora|Poppins:300,400|Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <!-- inject:css -->
 
   <!-- endinject -->
 </head>
@@ -28,7 +31,7 @@
   <div class="message" ng-if="main.message">
     <div class="container">{{main.message}}</div>
   </div>
-  <main class="container" ui-view>
+  <main ui-view>
 
   </main>
 </body>
