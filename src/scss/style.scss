@@ -149,6 +149,11 @@ nav{
 }
 .trip-info{
   margin-top: 20px;
+  .comments{
+    height: 400px;
+    overflow: scroll;
+    border: 1px solid $primary;
+  }
 }
 .comment {
   border: 1px solid $primary;
