@@ -63,23 +63,14 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
-      <h5>Co-travellers:</h5>
-      <div class="attendees">
-      <h6>Are you coming with us?</h6>
-      <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Yes</button>
-      <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">No</button>
-      <h6>Who's coming with us:</h6>
-      <div ng-repeat="attendee in tripsShow.trip.attendees" class="row">
-        <div class="col-6">
-          <div class="profile-img-small" style="background-image:url({{ attendee.image_src }})"></div>
-        </div>
-        <div class="col-6 username-box">
-          <p class="profile-username"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
-        </div>
+      <h5>Who's coming with us:</h5>
+      <div>
+        <p ng-repeat="attendee in tripsShow.trip.attendees"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
       </div>
+      <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
+      <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
     </div>
-    </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <h5>Comments</h5>
       <div ng-if="tripsShow.trip.comments.length !== 0" class="comments">
         <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
@@ -94,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <h5>Add Comment</h5>
       <form ng-submit="tripsShow.addComment()">
         <div class="form-group">
