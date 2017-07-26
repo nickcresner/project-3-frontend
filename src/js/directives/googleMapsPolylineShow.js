@@ -15,7 +15,7 @@ function googleMap() {
     link(scope, element) {
 
       let map = null;
-      let marker = null;
+      // let marker = null;
       let legsMarkers = [];
       let infowindow = null;
       scope.$watch('legs', initMap);
@@ -205,7 +205,7 @@ function googleMap() {
 
       function destroyMap(){
         console.log('destroying map...');
-        marker.setMap(null);
+        removeLegsMarkers();
         marker = null;
         map = null;
       }
