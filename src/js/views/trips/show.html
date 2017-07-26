@@ -71,9 +71,9 @@
   <div class="row">
     <div class="col-lg-4">
       <h5>Budget:</h5>
-      <p>Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}}</p>
-      <p>Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}}</p>
-      <p>Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}}</p>
+      <p>Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p>Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p>Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
       <h5>Currency converter: </h5>
     </div>
     <div class="col-lg-4">
