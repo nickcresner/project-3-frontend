@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-12 col-sm-12 image-show-box" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url({{ tripsShow.trip.image_src }})">
+  <div class="col-lg-12 col-md-12 col-sm-12 image-show-box" style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url({{ tripsShow.trip.image_src }})">
     <div class="image-show-box-text">
       <h2>{{ tripsShow.trip.name }}</h2>
       <h3>{{ tripsShow.trip.country }}</h3>
@@ -32,16 +32,32 @@
       <div>
         <p ng-repeat="attendee in tripsShow.trip.attendees"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
       </div>
-      <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
-      <button ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
+      <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
+      <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <h5>Comments</h5>
-      <div>
+      <!-- <div class="row comment">
         <p ng-repeat="comment in tripsShow.trip.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></p>
+      </div> -->
+
+
+      <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
+        <div class="col-xs-3 user-details">
+          <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
+          <p><small>{{ comment.user.username }}</small></p>
+        </div>
+        <div class="col-xs-9 comment-content">
+          <p>{{ comment.body }}</p>
+          <button class="btn delete-comment" ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>
       </div>
+
+
+
+
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <h5>Add Comment</h5>
       <form ng-submit="tripsShow.addComment()">
         <div class="form-group">
