@@ -1,3 +1,5 @@
-<h1>Welcome to trip app!</h1>
-<a ui-sref="login" ui-sref-active="active">Login</a>
-<a ui-sref="register" ui-sref-active="active">Register</a>
+<section ng-if="!main.isAuthenticated()">
+  <h1>Welcome to trip app!</h1>
+  <a ui-sref="login" ui-sref-active="active">Login</a>
+  <a ui-sref="register" ui-sref-active="active">Register</a>
+</section>

@@ -6,8 +6,9 @@
       <h3>{{ tripsShow.trip.country }}</h3>
       <p>From {{ tripsShow.trip.start_date }} to {{ tripsShow.trip.end_date }}</p>
       <p>Created by: <strong><a ui-sref="usersShow({ id: tripsShow.trip.user.id })">{{ tripsShow.trip.user.username }}</a></strong></p>
-      <button class="btn btn-danger" ng-click="tripsShow.delete()">Delete</button>
-      <button class="btn btn-primary" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</button>
+      <button ng-if="main.isAuthenticated() && main.currentUserId === tripsShow.trip.user.id" class="btn btn-danger" ng-click="tripsShow.delete()">Delete</button>
+      <button ng-if="main.isAuthenticated() && main.currentUserId === tripsShow.trip.user.id" class="btn btn-primary" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</button>
+      {{ tripsShow.trip.createdBy }}
     </div>
   </div>
 </div>

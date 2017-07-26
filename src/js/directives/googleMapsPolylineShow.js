@@ -146,9 +146,9 @@ function googleMap() {
         var flightPath = new google.maps.Polyline({
           path: legs,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#12A4C9',
           strokeOpacity: 1.0,
-          strokeWeight: 2
+          strokeWeight: 3
         });
 
         flightPath.setMap(map);
@@ -165,7 +165,15 @@ function googleMap() {
       }
 
       function addLegMarker(leg) {
+        var customIcon = {
+          url: './images/001-signs-2.png',
+          size: new google.maps.Size(70, 70),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(20, 40),
+          scaledSize: new google.maps.Size(40, 40)
+        };
         const marker = new google.maps.Marker({
+          icon: customIcon,
           position: {lat: leg.lat, lng: leg.lng },
           map
         });
@@ -183,7 +191,7 @@ function googleMap() {
 
         infowindow = new google.maps.InfoWindow({
           content: `${name}`,
-          pixelOffset: new google.maps.Size(0, 13)
+          pixelOffset: new google.maps.Size(-15, 30)
 
         });
         infowindow.open(map, marker);
