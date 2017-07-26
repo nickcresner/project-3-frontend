@@ -12,6 +12,7 @@
     </div>
   </div>
 </div>
+<hr>
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
@@ -26,6 +27,35 @@
     </div>
     <div class="col-lg-4">
       <google-map legs="tripsShow.trip.legs"></google-map>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="container trip-info">
+  <div class="row">
+    <div class="col-lg-4">
+      <h5>Budget:</h5>
+      <p>Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p>Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p>Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <h5>Currency converter: </h5>
+    </div>
+    <div class="col-lg-4">
+      <h5>Weather</h5>
+
+      <div>
+        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103;  <img height="50px" ng-src="/images/{{ leg.weather.currently.icon }}.png"></p>
+
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <h5>Country facts</h5>
+      <p><img src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
+      <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
+      <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
+      <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
+      <p>Dial Code: +{{ tripsShow.trip.legs[0].facts.callingCodes[0] }}</p>
+      <p>Subregion: {{ tripsShow.trip.legs[0].facts.subregion }}</p>
     </div>
   </div>
 </div>
@@ -69,31 +99,3 @@
   </div>
 </div>
 <hr>
-<div class="container trip-info">
-  <div class="row">
-    <div class="col-lg-4">
-      <h5>Budget:</h5>
-      <p>Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <p>Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <p>Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <h5>Currency converter: </h5>
-    </div>
-    <div class="col-lg-4">
-      <h5>Weather</h5>
-
-      <div>
-        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103;  <img height="50px" ng-src="/images/{{ leg.weather.currently.icon }}.png"></p>
-
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <h5>Country facts</h5>
-      <p><img src="{{ tripsShow.trip.legs[0].facts.flag }}"></p>
-      <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
-      <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
-      <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
-      <p>Dial Code: +{{ tripsShow.trip.legs[0].facts.callingCodes[0] }}</p>
-    </div>
-  </div>
-
-</div>

@@ -29,7 +29,7 @@
   <h3>Add to your trip itinerary:</h3>
   <p>{{ tripsEdit.trip.legs.length }} stops of your trip:</p>
   <ul>
-    <li ng-repeat="leg in tripsEdit.trip.legs">{{ leg.name }}<button class="btn btn-danger" type="button" ng-click="tripsEdit.deleteLeg(leg)">X</button></li>
+    <li ng-repeat="leg in tripsEdit.trip.legs">{{ leg.name }} <button class="btn btn-bin-delete" type="button" ng-click="tripsEdit.deleteLeg(leg)"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
   </ul>
   <div class="form-group">
     <label>Place name: </label>
