@@ -26,8 +26,8 @@ function TripsIndexCtrl(Trip, filterFilter, $scope) {
 
 }
 
-TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather', 'budget', '$state'];
-function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget, $state) {
+TripsShowCtrl.$inject = ['$stateParams', 'Trip', 'User', 'Comment', '$auth', 'weather', 'budget', '$state', 'facts'];
+function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget, $state, facts) {
   const vm = this;
   vm.trip = {};
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
@@ -38,6 +38,7 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
     vm.trip = trip;
     vm.trip.legs = vm.trip.legs.map(legWeather);
     vm.trip.leg = countryBudget(vm.trip.legs[0]);
+    vm.trip.leg = countryFact(vm.trip.legs[0]);
   });
 
   function tripsDelete() {
@@ -60,6 +61,15 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
     budget.getBudget(leg.lat, leg.lng)
     .then((response) => {
       leg.budget = response;
+      console.log(response);
+    });
+    return leg;
+  }
+
+  function countryFact(leg){
+    facts.getFact(leg.lat, leg.lng)
+    .then((response) => {
+      leg.facts = response;
       console.log(response);
     });
     return leg;
