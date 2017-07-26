@@ -1,8 +1,10 @@
 <video loop autoplay id="video-background" muted>
   <source src="https://s3-eu-west-1.amazonaws.com/wdi27/video1.mp4" type="video/mp4">
   </video>
-<section ng-if="!main.isAuthenticated()">
-  <h1>Welcome to trip app!</h1>
-  <a ui-sref="login" ui-sref-active="active">Login</a>
-  <a ui-sref="register" ui-sref-active="active">Register</a>
-</section>
+  <section ng-if="!main.isAuthenticated()">
+    <div class="home-box">
+      <h1>TravelMate</h1>
+      <p><a ui-sref="login" ui-sref-active="active">Login</a></p>
+      <p><a ui-sref="register" ui-sref-active="active">Register</a></p>
+    </div>
+  </section>
