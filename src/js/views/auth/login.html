@@ -3,14 +3,14 @@
     <h3>Login</h3>
     <div class="form-group">
       <label for="email">Email</label>
-      <input class="form-control" type="text" name="email" id="email" ng-model="login.credentials.email">
+      <input class="form-control" type="text" name="email" id="email" ng-model="login.credentials.email" required>
       <div ng-messages="login.loginForm.email.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched">
         <div ng-message="required">Email is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label class="label" for="password">Password</label>
-      <input class="form-control" type="password" name="password" id="password" ng-model="login.credentials.password">
+      <input class="form-control" type="password" name="password" id="password" ng-model="login.credentials.password" required>
       <div ng-messages="login.loginForm.password.$error" ng-show="login.loginForm.$submitted || login.loginForm.password.$touched">
         <div ng-message="required">Password is required.</div>
       </div>
