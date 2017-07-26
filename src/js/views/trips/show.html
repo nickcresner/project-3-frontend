@@ -88,9 +88,11 @@
     </div>
     <div class="col-lg-4">
       <h5>Country facts</h5>
-      <p>Flag: <img src="{{ tripsShow.trip.legs[0].facts.flag }}"></p>
+      <p><img src="{{ tripsShow.trip.legs[0].facts.flag }}"></p>
       <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
+      <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
       <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
+      <p>Dial Code: +{{ tripsShow.trip.legs[0].facts.callingCodes[0] }}</p>
     </div>
   </div>
 
