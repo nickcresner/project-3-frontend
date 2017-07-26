@@ -177,6 +177,7 @@ nav{
     border-radius: 5px;
     position: relative;
 
+<<<<<<< HEAD
     .comment-content{
       padding: 0;
       p {
@@ -236,3 +237,51 @@ nav{
       font-size: 16px;
     }
   }
+=======
+  .user-details{
+    padding-top: 20px;
+  }
+}
+.user-show-image{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid $primary;
+  background-position: center;
+  background-size: cover;
+  margin: 10px auto;
+}
+.btn-bin-delete{
+  border-radius: 50%;
+  font-size: 18px;
+  padding: 1px 6px;
+  cursor: pointer;
+  background-color: $primary;
+  i{
+    font-size: 16px;
+  }
+}
+.comments,.attendees{
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid $primary;
+  .profile-img-small {
+    margin: 5px auto;
+    height: 5em;
+    width: 5em;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 1px solid $primary;
+  }
+  .username-box{
+    position: relative;
+    .profile-username{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+}
+>>>>>>> development
