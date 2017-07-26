@@ -1,5 +1,6 @@
 <h4>Hello, I am {{ usersShow.user.username }}!</h4>
-<img ng-src="{{ usersShow.user.image_src }}">
+  <div class="user-show-image" style="background-image: url({{ usersShow.user.image_src  }})"></div>
+<!-- <img ng-src="{{ usersShow.user.image_src }}"> -->
 <p><strong>Full name: </strong>{{ usersShow.user.firstname }} {{ usersShow.user.lastname }}</p>
 <p><strong>Email: </strong>{{ usersShow.user.email }}</p>
 <p><strong>Bio: </strong><br>
