@@ -61,7 +61,6 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
     budget.getBudget(leg.lat, leg.lng)
     .then((response) => {
       leg.budget = response;
-      console.log(response);
     });
     return leg;
   }

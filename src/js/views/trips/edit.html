@@ -26,10 +26,10 @@
     <img ng-src="{{ tripsEdit.trip.base64 }}">
   </div>
 
-  <h2>Add Leg to mi trip:</h2>
-  <p>Mi trip has {{ tripsEdit.trip.legs.length }} legs!</p>
+  <h3>Add to your trip itinerary:</h3>
+  <p>{{ tripsEdit.trip.legs.length }} stops of your trip:</p>
   <ul>
-    <li ng-repeat="leg in tripsEdit.trip.legs">{{ leg.name }} {{leg.id }}<button class="btn btn-danger" type="button" ng-click="tripsEdit.deleteLeg(leg)">X</button></li>
+    <li ng-repeat="leg in tripsEdit.trip.legs">{{ leg.name }}<button class="btn btn-danger" type="button" ng-click="tripsEdit.deleteLeg(leg)">X</button></li>
   </ul>
   <div class="form-group">
     <label>Place name: </label>
