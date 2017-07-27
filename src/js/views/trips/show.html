@@ -36,13 +36,20 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
-      <h5>Attendees:</h5>
+      <h5>Attendees</h5>
       <div class="attendees">
-        <p><strong>Are you coming with us?</strong></p>
+        <h6>Are you coming with us?</h6>
         <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
         <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
-        <p><strong>Who's going:</strong></p>
-        <p ng-repeat="attendee in tripsShow.trip.attendees"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
+        <h6>Who's going:</h6>
+        <div class="row" ng-repeat="attendee in tripsShow.trip.attendees">
+          <div class="col-6">
+            <div class="profile-img-small" style="background-image:url({{ attendee.image_src }})"></div>
+          </div>
+          <div class="col-6 username-box">
+            <p class="profile-username"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-lg-4">

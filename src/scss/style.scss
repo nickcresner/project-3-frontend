@@ -95,6 +95,13 @@ body{
     text-transform: uppercase;
     margin-bottom: 20px;
   }
+  h6{
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 20px 0;
+  }
 }
 nav{
   text-align: left;
@@ -292,7 +299,7 @@ nav{
     .profile-username{
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 25%;
       transform: translate(-50%,-50%);
     }
   }
