@@ -7,50 +7,51 @@
     <div class="form-group">
       <label for="email">Username</label>
       <input class="form-control" type="text" name="username" id="username" ng-model="register.user.username" required>
-      <div ng-messages="register.registerForm.username.$error" ng-show="register.registerForm.$submitted || register.registerForm.username.$touched">
-        <div ng-message="required">Username is required.</div>
+      <div ng-messages="register.registerForm.username.$error" ng-show="(register.registerForm.username.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.username.$error.required">Username is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="firstname">First Name</label>
       <input class="form-control" type="text" name="firstname" id="firstname" ng-model="register.user.firstname" required>
-      <div ng-messages="register.registerForm.firstname.$error" ng-show="register.registerForm.$submitted || register.registerForm.firstname.$touched">
-        <div ng-message="required">First name is required.</div>
+      <div ng-messages="register.registerForm.firstname.$error" ng-show="(register.registerForm.firstname.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.firstname.$error.required">First name is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="lastname">Last Name</label>
       <input class="form-control" type="text" name="lastname" id="lastname" ng-model="register.user.lastname" required>
-      <div ng-messages="register.registerForm.lastname.$error" ng-show="register.registerForm.$submitted || register.registerForm.lastname.$touched">
-        <div ng-message="required">Last name is required.</div>
+      <div ng-messages="register.registerForm.lastname.$error" ng-show="(register.registerForm.lastname.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.lastname.$error.required">Last name is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input class="form-control" type="text" name="email" id="email" ng-model="register.user.email" required>
-      <div ng-messages="register.registerForm.email.$error" ng-show="register.registerForm.$submitted || register.registerForm.email.$touched">
-        <div ng-message="required">Email is required.</div>
+      <input class="form-control" type="email" name="email" id="email" ng-model="register.user.email" required>
+      <div ng-messages="register.registerForm.email.$error" ng-show="(register.registerForm.email.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.email.$error.required">Email is required.</div>
+        <div class="required" ng-message="email" ng-show="!register.registerForm.email.$error.required">Must be a valid email address.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
       <input class="form-control" type="password" name="password" id="password" ng-model="register.user.password" required>
-      <div ng-messages="register.registerForm.password.$error" ng-show="register.registerForm.$submitted || register.registerForm.password.$touched">
-        <div ng-message="required">Password is required.</div>
+      <div ng-messages="register.registerForm.password.$error" ng-show="(register.registerForm.password.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.password.$error.required">Password is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="password_confirmation">Password Confirmation</label>
       <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" ng-model="register.user.password_confirmation" required>
-      <div ng-messages="register.registerForm.password_confirmation.$error" ng-show="register.registerForm.$submitted || register.registerForm.password_confirmation.$touched">
-        <div ng-message="required">Password confirmation is required.</div>
+      <div ng-messages="register.registerForm.password_confirmation.$error" ng-show="(register.registerForm.password_confirmation.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.password_confirmation.$error.required">Password confirmation is required.</div>
       </div>
     </div>
     <div class="form-group">
       <label for="bio">Bio</label>
       <input class="form-control" type="text" name="bio" id="bio" ng-model="register.user.bio" required>
-      <div ng-messages="register.registerForm.bio.$error" ng-show="register.registerForm.$submitted || register.registerForm.bio.$touched">
-        <div ng-message="required">Bio is required.</div>
+      <div ng-messages="register.registerForm.bio.$error" ng-show="(register.registerForm.bio.$invalid)">
+        <div class="required" ng-message="required" ng-show="register.registerForm.bio.$error.required">Bio is required.</div>
       </div>
     </div>
 
