@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <h4>Hello, I am {{ usersShow.user.username }}!</h4>
   <div class="user-show-image" style="background-image: url({{ usersShow.user.image_src  }})"></div>
 <!-- <img ng-src="{{ usersShow.user.image_src }}"> -->
@@ -6,4 +7,23 @@
 <p><strong>Bio: </strong><br>
 {{ usersShow.user.bio }}</p>
 
+
+
 <button ng-if="main.isAuthenticated() && main.currentUserId === usersShow.user.id"  class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
+
+
+<!-- <section class="container">
+<h3>My trips</h3>
+  <input type="text" class="form-control" ng-model="tripsIndex.q" placeholder="Search by name..">
+  <div class="row">
+    <div class="col-md-6 col-lg-4" ng-repeat="trip in tripsIndex.filtered">
+      <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
+        <a ui-sref="tripsShow({ id: trip.id })">
+          <h3>{{ trip.name }}</h3>
+          <h6>{{ trip.country }}</h6>
+          <p>Show</p>
+        </a>
+      </div>
+    </div>
+  </div> -->
+<!-- </section> -->
