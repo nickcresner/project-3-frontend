@@ -49,13 +49,13 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
 
   vm.delete = tripsDelete;
 
-  // function legWeather(leg) {
-  //   weather.getWeather(leg.lat, leg.lng)
-  //   .then((response) => {
-  //     leg.weather = response;
-  //   });
-  //   return leg;
-  // }
+  function legWeather(leg) {
+    weather.getWeather(leg.lat, leg.lng)
+    .then((response) => {
+      leg.weather = response;
+    });
+    return leg;
+  }
 
   function countryBudget(leg){
     budget.getBudget(leg.lat, leg.lng)

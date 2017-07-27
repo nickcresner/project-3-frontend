@@ -12,6 +12,10 @@ $primary: #12A4C9;
   border: 1px solid #3b5998;
   color: #fff;
 }
+.search-bar{
+  margin: 0 auto;
+  width: 300px;
+}
 .required{
   margin-top: 10px;
   font-size: 12px;
@@ -242,6 +246,9 @@ nav{
   .small-icon-show{
     margin-bottom: 20px;
   }
+}
+.small-icon-auth{
+  margin: 10px 0;
 }
 .comment {
   border: 1px solid $primary;
