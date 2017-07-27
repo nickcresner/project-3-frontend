@@ -56,7 +56,7 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()">Add an item</button><br>
+    <button class="btn btn-primary" type="button" ng-click="tripsEdit.addLeg()" ng-disabled="!tripsEdit.newLeg.name">Add an item</button><br>
   </div>
   <div class="form-group">
     <button class="btn btn-primary">Submit</button>

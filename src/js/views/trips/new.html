@@ -58,7 +58,7 @@
       <div class="required" ng-show="tripsNew.legs.length < 2">Your trip needs to have at least 2 stops.</div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()" ng-disabled="tripsNew.newLeg.length === 0">Add a leg</button><br>
+      <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()" ng-disabled="!tripsNew.newLeg.name">Add a leg</button><br>
     </div>
 
     <div class="form-group">
