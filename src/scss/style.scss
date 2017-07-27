@@ -101,7 +101,7 @@ nav{
   padding: 0;
   margin: 0;
   height: 50px;
-  text-decoration: none;  
+  text-decoration: none;
   .nav-left{
     float: right;
     margin-right: 20px;
@@ -219,6 +219,9 @@ nav{
 }
 .trip-info{
   margin-top: 20px;
+  .small-icon-show{
+    margin-bottom: 20px;
+  }
 }
 .comment {
   border: 1px solid $primary;
@@ -293,4 +296,7 @@ nav{
       transform: translate(-50%,-50%);
     }
   }
+}
+.small-flag{
+  border: 1px solid gray;
 }

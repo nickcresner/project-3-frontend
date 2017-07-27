@@ -16,10 +16,12 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/014-report.png" height="40px">
       <h5>Trip info</h5>
       <p>{{ tripsShow.trip.info }}</p>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/013-airplane.png" height="40px">
       <h5>Travel itinerary:</h5>
       <div>
         <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }}</p>
@@ -38,9 +40,9 @@
       <p><img src="/images/003-hostel.png">Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
       <p><img src="/images/001-hotel-1.png">Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
       <p><img src="/images/002-hotel.png">Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <h5>Currency converter: </h5>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/025-thermometer.png" height="40px">
       <h5>Weather</h5>
 
       <div>
@@ -50,7 +52,7 @@
     </div>
     <div class="col-lg-4">
       <h5>Country facts</h5>
-      <p><img src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
+      <p><img class="small-flag" src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
       <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
       <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
       <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
