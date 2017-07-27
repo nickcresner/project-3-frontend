@@ -129,8 +129,8 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
 
 }
 
-TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User'];
-function TripsNewCtrl($state, Trip, Leg, User){
+TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User', '$auth'];
+function TripsNewCtrl($state, Trip, Leg, User, $auth){
   const vm = this;
   vm.users = User.query();
 
@@ -139,6 +139,7 @@ function TripsNewCtrl($state, Trip, Leg, User){
   vm.create = tripsCreate;
 
   function tripsCreate(){
+    vm.trip.attendee_ids = [$auth.getPayload().id];
     if(vm.newTripForm.$valid && vm.legs.length >= 2){
       Trip
       .save(vm.trip)

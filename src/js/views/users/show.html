@@ -12,11 +12,10 @@
 <button ng-if="main.isAuthenticated() && main.currentUserId === usersShow.user.id"  class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
 
 
-<!-- <section class="container">
+<section class="container">
 <h3>My trips</h3>
-  <input type="text" class="form-control" ng-model="tripsIndex.q" placeholder="Search by name..">
   <div class="row">
-    <div class="col-md-6 col-lg-4" ng-repeat="trip in tripsIndex.filtered">
+    <div class="col-md-6 col-lg-4" ng-repeat="trip in usersShow.user.trips_attending">
       <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
         <a ui-sref="tripsShow({ id: trip.id })">
           <h3>{{ trip.name }}</h3>
@@ -25,5 +24,5 @@
         </a>
       </div>
     </div>
-  </div> -->
-<!-- </section> -->
+  </div>
+</section>
