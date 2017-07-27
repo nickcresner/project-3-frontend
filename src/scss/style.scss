@@ -79,6 +79,12 @@ body{
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+  main{
+    margin-bottom: 30px;
+    .center{
+      margin: 30px auto;
+    }
+  }
   img{
     max-width: 100%;
     margin: 0 auto;

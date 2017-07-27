@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<h4>Hello, I am {{ usersShow.user.username }}!</h4>
-  <div class="user-show-image" style="background-image: url({{ usersShow.user.image_src  }})"></div>
-<!-- <img ng-src="{{ usersShow.user.image_src }}"> -->
-<p><strong>Full name: </strong>{{ usersShow.user.firstname }} {{ usersShow.user.lastname }}</p>
-<p><strong>Email: </strong>{{ usersShow.user.email }}</p>
-<p><strong>Bio: </strong><br>
-{{ usersShow.user.bio }}</p>
-
-
-
-<button ng-if="main.isAuthenticated() && main.currentUserId === usersShow.user.id"  class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
-
-
 <section class="container">
-<h3>My trips</h3>
   <div class="row">
-    <div class="col-md-6 col-lg-4" ng-repeat="trip in usersShow.user.trips_attending">
-      <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
-        <a ui-sref="tripsShow({ id: trip.id })">
-          <h3>{{ trip.name }}</h3>
-          <h6>{{ trip.country }}</h6>
-          <p>Show</p>
-        </a>
+    <div class="col-lg-6 col-sm-12 center">
+      <h4>Hello, I am {{ usersShow.user.username }}!</h4>
+      <div class="user-show-image" style="background-image: url({{ usersShow.user.image_src  }})"></div>
+      <p><strong>Full name: </strong>{{ usersShow.user.firstname }} {{ usersShow.user.lastname }}</p>
+      <p><strong>Email: </strong>{{ usersShow.user.email }}</p>
+      <p><strong>Bio: </strong><br>
+        {{ usersShow.user.bio }}</p>
+        <button ng-if="main.isAuthenticated() && main.currentUserId === usersShow.user.id"  class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
       </div>
     </div>
-  </div>
-</section>
+    <hr>
+    <h5>My trips</h5>
+    <div class="row">
+      <div class="col-md-6 col-lg-4" ng-repeat="trip in usersShow.user.trips_attending">
+        <div class="trip-index" style="background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url({{ trip.image_src }})">
+          <a ui-sref="tripsShow({ id: trip.id })">
+            <h3>{{ trip.name }}</h3>
+            <h6>{{ trip.country }}</h6>
+            <p>Show</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
