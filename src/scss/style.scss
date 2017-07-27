@@ -7,9 +7,15 @@ $primary: #12A4C9;
   width: 100%;
   border-radius: 5px;
 }
+.facebook{
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  color: #fff;
+}
 .required{
   margin-top: 10px;
   font-size: 12px;
+  color: gray;
 }
 #video-background {
   /*  making the video fullscreen  */
