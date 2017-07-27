@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-
-
-  <h3>Login</h3>
-
 <section class="row">
-
   <form class="col-lg-4 col-md-6" ng-submit="login.submit()" name="login.loginForm" novalidate>
-    <img src="/images/002-rich.png">
+    <img class="small-icon-auth" src="/images/002-rich.png">
+    <h3>Login</h3>
     <div class="form-group">
       <label for="email">Email</label>
       <input class="form-control" type="email" name="email" id="email" ng-model="login.credentials.email" required>
@@ -23,7 +19,7 @@
       </div>
     </div>
     <div class="form-group">
-      <button type="button" class="facebook" ng-click="login.authenticate('facebook')"><i class="fa fa-facebook-official" aria-hidden="true"></i> Login with FB</button>
+      <button type="button" class="btn facebook" ng-click="login.authenticate('facebook')"><i class="fa fa-facebook-official" aria-hidden="true"></i> Login with FB</button>
       <input type="submit" class="btn btn-primary" value="Login">
     </div>
   </form>
