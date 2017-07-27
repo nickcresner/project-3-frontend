@@ -79,6 +79,10 @@ body{
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+  img{
+    max-width: 100%;
+    margin: 0 auto;
+  }
   .form-control{
     border: 1px solid $primary;
   }
@@ -167,6 +171,10 @@ nav{
       a{
         color: #000;
         position: relative;
+        &.active {
+          color: $primary;
+          text-decoration: none;
+        }
         &:before {
           content: "";
           position: absolute;

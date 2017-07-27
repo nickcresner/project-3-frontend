@@ -145,7 +145,6 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
       .save(vm.trip)
       .$promise
       .then((trip) => {
-
         vm.legs.forEach((leg) => {
           leg.trip_id = trip.id;
           Leg.
@@ -175,7 +174,13 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
 TripsEditCtrl.$inject = ['Trip', 'Leg', 'User', '$stateParams', '$state'];
 function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   const vm = this;
-  vm.trip = Trip.get($stateParams);
+  Trip.get($stateParams)
+    .$promise
+    .then((trip) => {
+      vm.trip = trip;
+      vm.trip.start_date = new Date(vm.trip.start_date);
+      vm.trip.end_date = new Date(vm.trip.end_date);
+    });
   vm.users = User.query();
 
 
