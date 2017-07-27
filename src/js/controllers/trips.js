@@ -139,21 +139,23 @@ function TripsNewCtrl($state, Trip, Leg, User){
   vm.create = tripsCreate;
 
   function tripsCreate(){
-    Trip
-    .save(vm.trip)
-    .$promise
-    .then((trip) => {
+    if(vm.newTripForm.$valid && vm.legs.length >= 2){
+      Trip
+      .save(vm.trip)
+      .$promise
+      .then((trip) => {
 
-      vm.legs.forEach((leg) => {
-        leg.trip_id = trip.id;
-        Leg.
-        save(leg)
-        .$promise
-        .then(() => {
-          $state.go('tripsIndex');
+        vm.legs.forEach((leg) => {
+          leg.trip_id = trip.id;
+          Leg.
+          save(leg)
+          .$promise
+          .then(() => {
+            $state.go('tripsIndex');
+          });
         });
       });
-    });
+    }
   }
 
   function addLeg(){
@@ -177,9 +179,11 @@ function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
 
 
   function tripsUpdate() {
-    vm.trip
-    .$update()
-    .then(() => $state.go('tripsShow', $stateParams));
+    if(vm.editTripForm.$valid && vm.trip.legs.length >= 2){
+      vm.trip
+      .$update()
+      .then(() => $state.go('tripsShow', $stateParams));
+    }
   }
 
   vm.update = tripsUpdate;
