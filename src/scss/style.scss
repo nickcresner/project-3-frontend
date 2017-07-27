@@ -162,6 +162,10 @@ nav{
       a{
         color: #000;
         position: relative;
+        &.active {
+          color: $primary;
+          text-decoration: none;
+        }
         &:before {
           content: "";
           position: absolute;
