@@ -50,6 +50,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider){
     url: '/users/:id/edit',
     templateUrl: 'js/views/users/edit.html',
     controller: 'UsersEditCtrl as usersEdit'
+  })
+  .state('about', {
+    url: '/about',
+    templateUrl: 'js/views/static/about.html'
   });
 
   $urlRouterProvider.otherwise('/trips');
