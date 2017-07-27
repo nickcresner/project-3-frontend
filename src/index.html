@@ -11,6 +11,7 @@
   <!-- endinject -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lora|Poppins:300,400|Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two:400,400i,700,700i|Pacifico|Satisfy" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- inject:css -->
 
@@ -19,7 +20,8 @@
 <body ng-controller="MainCtrl as main">
   <nav>
     <ul ng-if="main.isAuthenticated()">
-      <li><img src="./images/043-planet-earth.png" height="40px"></li>
+      <li><img class="nav-logo-img" src="./images/043-planet-earth.png" height="40px"></li>
+      <li class="nav-logo-text">Adventurefy!</li>
       <li><a ui-sref="tripsIndex"><i class="fa fa-globe" aria-hidden="true"></i> All the trips</a></li>
       <li><a ui-sref="tripsNew"><i class="fa fa-suitcase" aria-hidden="true"></i> Create a Trip</a></li>
       <li><a ui-sref="about"><i class="fa fa-heart" aria-hidden="true"></i> About</a></li>

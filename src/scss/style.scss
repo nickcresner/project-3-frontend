@@ -23,9 +23,13 @@ $primary: #12A4C9;
   z-index: -100;
 }
 .home-box{
-  margin-top: 40vh;
+  margin-top: 25vh;
+  .home-image{
+    margin-bottom: 25px;
+  }
   h1{
-    font-size: 50px;
+    font-family: 'Lobster Two', cursive;
+    font-size: 60px;
     letter-spacing: 1px;
     color: #fff;
   }
@@ -113,6 +117,14 @@ nav{
   margin: 0;
   height: 50px;
   text-decoration: none;
+  .nav-logo-text {
+    font-family: 'Lobster Two', cursive;
+    font-size: 25px;
+    margin-left: 5px;
+  }
+  .nav-logo-img {
+    margin-left: 15px;
+  }
   .nav-left{
     float: right;
     margin-right: 20px;
