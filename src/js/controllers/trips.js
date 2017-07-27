@@ -179,9 +179,11 @@ function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
 
 
   function tripsUpdate() {
-    vm.trip
-    .$update()
-    .then(() => $state.go('tripsShow', $stateParams));
+    if(vm.editTripForm.$valid && vm.trip.legs.length >= 2){
+      vm.trip
+      .$update()
+      .then(() => $state.go('tripsShow', $stateParams));
+    }
   }
 
   vm.update = tripsUpdate;

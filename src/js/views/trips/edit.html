@@ -1,25 +1,40 @@
 <form class="col-md-6" ng-submit="tripsEdit.update()"  name="tripsEdit.editTripForm" novalidate>
   <img class="small-icon-auth" src="/images/012-luggage.png" height="70px">
   <h3>Edit '{{ tripsEdit.trip.name }}' trip</h3>
-  <div>
+  <div class="form-group">
     <label>Name</label>
-    <input class="form-control" type="text" ng-model="tripsEdit.trip.name">
+    <input class="form-control" name="name" type="text" ng-model="tripsEdit.trip.name" required>
+    <div ng-messages="tripsEdit.editTripForm.name.$error" ng-show="(tripsEdit.editTripForm.name.$invalid)">
+      <div class="required" ng-message="required" ng-show="tripsEdit.editTripForm.name.$error.required">Name for the trip is required.</div>
+    </div>
   </div>
-  <div>
+  <div class="form-group">
     <label>Country</label>
-    <input class="form-control" type="text" ng-model="tripsEdit.trip.country">
+    <input class="form-control" name="country" type="text" ng-model="tripsEdit.trip.country" required>
+    <div ng-messages="tripsEdit.editTripForm.country.$error" ng-show="(tripsEdit.editTripForm.country.$invalid)">
+      <div class="required" ng-message="required" ng-show="tripsEdit.editTripForm.country.$error.required">Country is required.</div>
+    </div>
   </div>
   <div class="form-group">
     <label>Start Date</label>
-    <input type="date" class="form-control" ng-model="tripsEdit.trip.start_date" name="start_date">
+    <input type="date" class="form-control" ng-model="tripsEdit.trip.start_date" name="start_date" required>
+    <div ng-messages="tripsEdit.editTripForm.start_date.$error" ng-show="(tripsEdit.editTripForm.start_date.$invalid)">
+      <div class="required" ng-message="required" ng-show="tripsEdit.editTripForm.start_date.$error.required">Start date is required.</div>
+    </div>
   </div>
   <div class="form-group">
     <label>End Date</label>
-    <input type="date" class="form-control" ng-model="tripsEdit.trip.end_date" name="end_date">
+    <input type="date" class="form-control" ng-model="tripsEdit.trip.end_date" name="end_date" required>
+    <div ng-messages="tripsEdit.editTripForm.end_date.$error" ng-show="(tripsEdit.editTripForm.end_date.$invalid)">
+      <div class="required" ng-message="required" ng-show="tripsEdit.editTripForm.end_date.$error.required">End date is required.</div>
+    </div>
   </div>
-  <div>
+  <div class="form-group">
     <label>Info</label>
-    <input class="form-control" type="text" ng-model="tripsEdit.trip.info">
+    <input class="form-control" name="info" type="text" ng-model="tripsEdit.trip.info" required>
+    <div ng-messages="tripsEdit.editTripForm.info.$error" ng-show="(tripsEdit.editTripForm.info.$invalid)">
+      <div class="required" ng-message="required" ng-show="tripsEdit.editTripForm.info.$error.required">Info is required.</div>
+    </div>
   </div>
   <div class="form-group">
     <label for="base64">Image</label>
@@ -34,7 +49,8 @@
   </ul>
   <div class="form-group">
     <label>Place name: </label>
-    <input autocomplete class="form-control" type="text" ng-model="tripsEdit.newLeg.name" lat="tripsEdit.newLeg.lat" lng="tripsEdit.newLeg.lng">
+    <input autocomplete name="leg" class="form-control" type="text" ng-model="tripsEdit.newLeg.name" lat="tripsEdit.newLeg.lat" lng="tripsEdit.newLeg.lng">
+    <div class="required" ng-show="tripsEdit.legs.length < 2">Your trip needs to have at least 2 stops.</div>
   </div>
 
   <div class="form-group">
