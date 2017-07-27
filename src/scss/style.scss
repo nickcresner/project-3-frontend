@@ -38,10 +38,11 @@ $primary: #12A4C9;
     margin-bottom: 25px;
   }
   h1{
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Pacifico', cursive;
     font-size: 60px;
     letter-spacing: 1px;
-    color: #fff;
+    color: #83D8DD;
+    text-shadow: 2px 2px black;
   }
   p{
     a{
@@ -125,19 +126,23 @@ nav{
   text-align: left;
   padding: 0;
   margin: 0;
-  height: 50px;
+  height: 60px;
   text-decoration: none;
   .nav-logo-text {
-    font-family: 'Lobster Two', cursive;
-    font-size: 25px;
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
     margin-left: 5px;
+    color: #83D8DD;
+    text-shadow: 1px 1px black;
   }
   .nav-logo-img {
     margin-left: 15px;
+    margin-top: -10px;
   }
   .nav-left{
     float: right;
     margin-right: 20px;
+    margin-top: 9px;
     position: relative;
     .small-profile-img{
       height: 45px;
@@ -146,7 +151,7 @@ nav{
       background-size: cover;
       border-radius: 50%;
       border: 2px solid $primary;
-      margin-top: 3px;
+      // margin-top: 3px;
       display: inline-block;
       position: absolute;
       left: -10px;
@@ -255,6 +260,9 @@ nav{
     }
   }
 }
+.show-map {
+  box-shadow: 1px 1px 1px #aaaaaa;
+}
 
 
 .trip-info{
@@ -264,7 +272,8 @@ nav{
   }
 }
 .small-icon-auth{
-  margin: 10px 0;
+  margin: 20px 0;
+  height: 80px;
 }
 .comment {
   border: 1px solid $primary;
@@ -352,4 +361,12 @@ nav{
 }
 .small-flag{
   border: 1px solid gray;
+}
+
+.about {
+  p {
+    margin: auto;
+    text-align: center;
+    width: 75%;
+  }
 }
