@@ -57,8 +57,10 @@
       <div ng-if="tripsShow.trip.comments.length !== 0" class="comments">
         <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
           <div class="col-3 user-details">
-            <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
-            <p><small>{{ comment.user.username }}</small></p>
+            <a ui-sref="usersShow({ id: comment.user.id })">
+              <div class="profile-img-small" style="background-image:url({{ comment.user.image_src }})"></div>
+              <p><small>{{ comment.user.username }}</small></p>
+            </a>
           </div>
           <div class="col-9 comment-content">
             <p>{{ comment.body }}</p>
