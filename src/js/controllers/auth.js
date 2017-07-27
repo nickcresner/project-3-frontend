@@ -23,6 +23,7 @@ function LoginCtrl($auth, $state){
   vm.credentials = {};
 
   function submit(){
+
     if(vm.loginForm.$valid){
       $auth.login(vm.credentials)
       .then(() => $state.go('tripsIndex'));
