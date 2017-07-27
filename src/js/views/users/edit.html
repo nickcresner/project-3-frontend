@@ -1,30 +1,43 @@
-
 <!DOCTYPE html>
-
-<h1>Edit mi user</h1>
 
 <section>
   <div class="row">
     <form class="col-md-6" ng-submit="usersEdit.update()" name="usersEdit.userForm" novalidate>
+      <h3>Edit {{ usersEdit.user.username }}</h3>
       <div class="form-group">
         <label>Username</label>
-        <input type="text" class="input form-control" id="username" name="username" ng-model="usersEdit.user.username" value="{{ usersEdit.user.username }}">
+        <input type="text" class="input form-control" id="username" name="username" ng-model="usersEdit.user.username" value="{{ usersEdit.user.username }}" required>
+        <div ng-messages="usersEdit.userForm.username.$error" ng-show="(usersEdit.userForm.username.$invalid)">
+          <div class="required" ng-message="required" ng-show="usersEdit.userForm.username.$error.required">Username is required.</div>
+        </div>
       </div>
       <div class="form-group">
         <label>First Name</label>
-        <input type="text" class="input form-control" id="firstname" name="firstname" ng-model="usersEdit.user.firstname" value="{{ usersEdit.user.firstname }}">
+        <input type="text" class="input form-control" id="firstname" name="firstname" ng-model="usersEdit.user.firstname" value="{{ usersEdit.user.firstname }}" required>
+        <div ng-messages="usersEdit.userForm.firstname.$error" ng-show="(usersEdit.userForm.firstname.$invalid)">
+          <div class="required" ng-message="required" ng-show="usersEdit.userForm.firstname.$error.required">First name is required.</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="input form-control" id="lastname" name="lastname" ng-model="usersEdit.user.lastname" value="{{ usersEdit.user.lastname }}">
+        <input type="text" class="input form-control" id="lastname" name="lastname" ng-model="usersEdit.user.lastname" value="{{ usersEdit.user.lastname }}" required>
+        <div ng-messages="usersEdit.userForm.lastname.$error" ng-show="(usersEdit.userForm.lastname.$invalid)">
+          <div class="required" ng-message="required" ng-show="usersEdit.userForm.lastname.$error.required">Last name is required.</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="text" class="input form-control" id="email" name="email" ng-model="usersEdit.user.email" value="{{ usersEdit.user.email }}">
+        <input type="text" class="input form-control" id="email" name="email" ng-model="usersEdit.user.email" value="{{ usersEdit.user.email }}" required>
+        <div ng-messages="usersEdit.userForm.email.$error" ng-show="(usersEdit.userForm.email.$invalid)">
+          <div class="required" ng-message="required" ng-show="usersEdit.userForm.email.$error.required">Email is required.</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Bio</label>
-        <input type="text" class="input form-control" id="bio" name="bio" ng-model="usersEdit.user.bio" value="{{ usersEdit.user.bio }}">
+        <input type="text" class="input form-control" id="bio" name="bio" ng-model="usersEdit.user.bio" value="{{ usersEdit.user.bio }}" required>
+        <div ng-messages="usersEdit.userForm.bio.$error" ng-show="(usersEdit.userForm.bio.$invalid)">
+          <div class="required" ng-message="required" ng-show="usersEdit.userForm.bio.$error.required">Bio is required.</div>
+        </div>
       </div>
       <div class="form-group">
         <label for="base64">Image</label>

@@ -18,9 +18,11 @@ function UsersEditCtrl(User, $stateParams, $state) {
 
   vm.user = User.get($stateParams);
   function usersUpdate() {
-    vm.user
-    .$update()
-    .then(() => $state.go('usersShow', $stateParams));
+    if(vm.userForm.$valid){
+      vm.user
+      .$update()
+      .then(() => $state.go('usersShow', $stateParams));
+    }
   }
 
   vm.update = usersUpdate;
