@@ -15,7 +15,7 @@ function TripsIndexCtrl(Trip, filterFilter, $scope) {
   });
 
   function filterTrips(){
-    const params = { name: vm.q };
+    const params = { country: vm.q };
 
     vm.filtered = filterFilter(vm.all, params);
 
