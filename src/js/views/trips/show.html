@@ -16,10 +16,12 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/014-report.png" height="40px">
       <h5>Trip info</h5>
       <p>{{ tripsShow.trip.info }}</p>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/013-airplane.png" height="40px">
       <h5>Travel itinerary:</h5>
       <div>
         <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }}</p>
@@ -34,43 +36,23 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
-      <h5>Average Budgets for {{ tripsShow.trip.legs[0].facts.name }}</h5>
-      <p><img src="/images/003-hostel.png">Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <p><img src="/images/001-hotel-1.png">Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <p><img src="/images/002-hotel.png">Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
-      <h5>Currency converter: </h5>
-    </div>
-    <div class="col-lg-4">
-      <h5>Weather</h5>
-
-      <div>
-        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103;  <img height="50px" ng-src="/images/{{ leg.weather.currently.icon }}.png"></p>
-
+      <h5>Attendees</h5>
+      <div class="attendees">
+        <h6>Are you coming with us?</h6>
+        <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
+        <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
+        <h6>Who's going:</h6>
+        <div class="row" ng-repeat="attendee in tripsShow.trip.attendees">
+          <div class="col-6">
+            <div class="profile-img-small" style="background-image:url({{ attendee.image_src }})"></div>
+          </div>
+          <div class="col-6 username-box">
+            <p class="profile-username"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-lg-4">
-      <h5>Country facts</h5>
-      <p><img src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
-      <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
-      <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
-      <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
-      <p>Dial Code: +{{ tripsShow.trip.legs[0].facts.callingCodes[0] }}</p>
-      <p>Subregion: {{ tripsShow.trip.legs[0].facts.subregion }}</p>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="container trip-info">
-  <div class="row">
-    <div class="col-lg-4">
-      <h5>Who's coming with us:</h5>
-      <div>
-        <p ng-repeat="attendee in tripsShow.trip.attendees"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
-      </div>
-      <button class="btn btn-primary" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && !tripsShow.isAttending()">Attend</button>
-      <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
-    </div>
-    <div class="col-lg-5">
       <h5>Comments</h5>
       <div ng-if="tripsShow.trip.comments.length !== 0" class="comments">
         <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
@@ -85,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
       <h5>Add Comment</h5>
       <form ng-submit="tripsShow.addComment()">
         <div class="form-group">
@@ -99,3 +81,31 @@
   </div>
 </div>
 <hr>
+<div class="container trip-info">
+  <div class="row">
+    <div class="col-lg-4">
+      <h5>Average Budgets for {{ tripsShow.trip.legs[0].facts.name }}</h5>
+      <p><img src="/images/003-hostel.png">Peasant budget per day: {{ tripsShow.trip.legs[0].budget.value_budget | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p><img src="/images/001-hotel-1.png">Midrange budget per day: {{ tripsShow.trip.legs[0].budget.value_midrange | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+      <p><img src="/images/002-hotel.png">Posh budget per day: {{ tripsShow.trip.legs[0].budget.value_luxury | number:0}} {{ tripsShow.trip.legs[0].budget.currency_code }}</p>
+    </div>
+    <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/025-thermometer.png" height="40px">
+      <h5>Weather</h5>
+
+      <div>
+        <p ng-repeat="leg in tripsShow.trip.legs">{{ leg.name }} {{ leg.weather.currently.temperature }} &#x2103;  <img height="50px" ng-src="/images/{{ leg.weather.currently.icon }}.png"></p>
+
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <h5>Country facts</h5>
+      <p><img class="small-flag" src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
+      <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
+      <p>Capital City: {{ tripsShow.trip.legs[0].facts.capital }}</p>
+      <p>Currency: {{ tripsShow.trip.legs[0].facts.currencies[0].name }}</p>
+      <p>Dial Code: +{{ tripsShow.trip.legs[0].facts.callingCodes[0] }}</p>
+      <p>Subregion: {{ tripsShow.trip.legs[0].facts.subregion }}</p>
+    </div>
+  </div>
+</div>
