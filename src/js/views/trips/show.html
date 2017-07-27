@@ -36,6 +36,7 @@
 <div class="container trip-info">
   <div class="row">
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/009-tourist.png" height="40px">
       <h5>Attendees</h5>
       <div class="attendees">
         <h6>Are you coming with us?</h6>
@@ -53,6 +54,7 @@
       </div>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/011-smartphone.png" height="40px">
       <h5>Comments</h5>
       <div ng-if="tripsShow.trip.comments.length !== 0" class="comments">
         <div class="row comment" ng-repeat="comment in tripsShow.trip.comments">
@@ -70,6 +72,7 @@
       </div>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/043-planet-earth.png" height="40px">
       <h5>Add Comment</h5>
       <form ng-submit="tripsShow.addComment()">
         <div class="form-group">
@@ -101,6 +104,7 @@
       </div>
     </div>
     <div class="col-lg-4">
+      <img class="small-icon-show" src="./images/043-planet-earth.png" height="40px">
       <h5>Country facts</h5>
       <p><img class="small-flag" src="{{ tripsShow.trip.legs[0].facts.flag }}" height="50px"></p>
       <p>Country Name: {{ tripsShow.trip.legs[0].facts.name }}</p>
