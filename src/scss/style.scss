@@ -307,8 +307,8 @@ nav{
     .delete-comment{
       float: right;
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 8px;
+      right: -10px;
       border-radius: 50%;
       font-size: 18px;
       padding: 1px 6px;
@@ -321,6 +321,7 @@ nav{
   }
   .user-details{
     padding-top: 20px;
+    margin-left: -20px;
   }
 }
 .user-show-image{
