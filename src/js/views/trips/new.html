@@ -1,69 +1,70 @@
 <!DOCTYPE html>
-<section class="row">
+<div class="container">
 
+  <section class="row">
+    <form class="col-md-6" ng-submit="tripsNew.create()" name="tripsNew.newTripForm" novalidate>
+      <img class="small-icon-auth" src="/images/012-luggage.png" height="70px">
 
-  <form class="col-md-6" ng-submit="tripsNew.create()" name="tripsNew.newTripForm" novalidate>
-    <img class="small-icon-auth" src="/images/012-luggage.png" height="70px">
-
-    <h3>Add a new trip</h3>
-    <div class="form-group">
-      <label>Name</label>
-      <input class="form-control" name="name" type="text" ng-model="tripsNew.trip.name" required>
-      <div ng-messages="tripsNew.newTripForm.name.$error" ng-show="(tripsNew.newTripForm.name.$invalid)">
-        <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.name.$error.required">Name for the trip is required.</div>
+      <h3>Add a new trip</h3>
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" name="name" type="text" ng-model="tripsNew.trip.name" required>
+        <div ng-messages="tripsNew.newTripForm.name.$error" ng-show="(tripsNew.newTripForm.name.$invalid)">
+          <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.name.$error.required">Name for the trip is required.</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Country</label>
-      <input type="text" class="form-control" ng-model="tripsNew.trip.country" name="country" required>
-      <div ng-messages="tripsNew.newTripForm.country.$error" ng-show="(tripsNew.newTripForm.country.$invalid)">
-        <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.country.$error.required">Country is required.</div>
+      <div class="form-group">
+        <label>Country</label>
+        <input type="text" class="form-control" ng-model="tripsNew.trip.country" name="country" required>
+        <div ng-messages="tripsNew.newTripForm.country.$error" ng-show="(tripsNew.newTripForm.country.$invalid)">
+          <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.country.$error.required">Country is required.</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Start Date</label>
-      <input type="date" class="form-control" ng-model="tripsNew.trip.start_date" name="start_date" required>
-      <div ng-messages="tripsNew.newTripForm.start_date.$error" ng-show="(tripsNew.newTripForm.start_date.$invalid)">
-        <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.start_date.$error.required">Start date is required.</div>
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" class="form-control" ng-model="tripsNew.trip.start_date" name="start_date" required>
+        <div ng-messages="tripsNew.newTripForm.start_date.$error" ng-show="(tripsNew.newTripForm.start_date.$invalid)">
+          <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.start_date.$error.required">Start date is required.</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>End Date</label>
-      <input type="date" class="form-control" ng-model="tripsNew.trip.end_date" name="end_date" required>
-      <div ng-messages="tripsNew.newTripForm.end_date.$error" ng-show="(tripsNew.newTripForm.end_date.$invalid)">
-        <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.end_date.$error.required">End date is required.</div>
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="date" class="form-control" ng-model="tripsNew.trip.end_date" name="end_date" required>
+        <div ng-messages="tripsNew.newTripForm.end_date.$error" ng-show="(tripsNew.newTripForm.end_date.$invalid)">
+          <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.end_date.$error.required">End date is required.</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Info</label>
-      <input class="form-control" name="info" type="text" ng-model="tripsNew.trip.info" required>
-      <div ng-messages="tripsNew.newTripForm.info.$error" ng-show="(tripsNew.newTripForm.info.$invalid)">
-        <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.info.$error.required">Info is required.</div>
+      <div class="form-group">
+        <label>Info</label>
+        <input class="form-control" name="info" type="text" ng-model="tripsNew.trip.info" required>
+        <div ng-messages="tripsNew.newTripForm.info.$error" ng-show="(tripsNew.newTripForm.info.$invalid)">
+          <div class="required" ng-message="required" ng-show="tripsNew.newTripForm.info.$error.required">Info is required.</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="base64">Image</label>
-      <input type="file" class="form-control" base64 name="base64" id="base64" ng-model="tripsNew.trip.base64">
-      <img ng-src="{{ tripsNew.trip.base64 }}">
-    </div>
+      <div class="form-group">
+        <label for="base64">Image</label>
+        <input type="file" class="form-control" base64 name="base64" id="base64" ng-model="tripsNew.trip.base64">
+        <img ng-src="{{ tripsNew.trip.base64 }}">
+      </div>
 
-    <h3>Add to your trip itinerary:</h3>
-    <p>Your trip has {{ tripsNew.legs.length }} stops</p>
-    <ul>
-      <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} <button class="btn btn-bin-delete" type="button" ng-click="tripsNew.deleteLeg(leg)"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
-    </ul>
-    <div class="form-group">
-      <label>Place name: </label>
-      <input autocomplete name="leg" class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
-      <div class="required" ng-show="tripsNew.legs.length < 2">Your trip needs to have at least 2 stops.</div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()" ng-disabled="!tripsNew.newLeg.name">Add a leg</button><br>
-    </div>
+      <h3>Add to your trip itinerary:</h3>
+      <p>Your trip has {{ tripsNew.legs.length }} stops</p>
+      <ul>
+        <li ng-repeat="leg in tripsNew.legs">{{ leg.name }} <button class="btn btn-bin-delete" type="button" ng-click="tripsNew.deleteLeg(leg)"><i class="fa fa-trash" aria-hidden="true"></i></button></li>
+      </ul>
+      <div class="form-group">
+        <label>Place name: </label>
+        <input autocomplete name="leg" class="form-control" type="text" ng-model="tripsNew.newLeg.name" lat="tripsNew.newLeg.lat" lng="tripsNew.newLeg.lng">
+        <div class="required" ng-show="tripsNew.legs.length < 2">Your trip needs to have at least 2 stops.</div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="button" ng-click="tripsNew.addLeg()" ng-disabled="!tripsNew.newLeg.name">Add a leg</button><br>
+      </div>
 
-    <div class="form-group">
-      <button class="btn btn-primary">Submit</button>
-    </div>
-  </form>
+      <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </form>
 
-</section>
+  </section>
+</div>

@@ -79,6 +79,12 @@ body{
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
+  main{
+    margin-bottom: 30px;
+    .center{
+      margin: 30px auto;
+    }
+  }
   img{
     max-width: 100%;
     margin: 0 auto;
@@ -372,5 +378,47 @@ nav{
     margin: auto;
     text-align: center;
     width: 75%;
+  }
+}
+.menu-responsive{
+  display: none;
+}
+
+@media only screen and (max-width: 975px){
+  nav{
+    ul{
+      display: block;
+      .nav-left{
+        float: none;
+        margin: 0;
+      }
+      li{
+        display: block;
+        float: none;
+        text-align: left;
+        .planet-logo{
+          margin: 0;
+        }
+      }
+      .desktop{
+        display: none;
+      }
+    }
+    .dropdown{
+      display: none;
+    }
+  }
+  .menu-responsive{
+    display: block;
+    color: #000;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .small-icon-show{
+    margin: 30px 0;
+  }
+  hr{
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
