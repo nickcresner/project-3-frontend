@@ -18,7 +18,7 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav role="navigation">
+  <nav role="navigation" ng-if="main.isAuthenticated()">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" ng-click="main.isNavCollapsed = !main.isNavCollapsed">
         <img class="nav-logo-img planet-logo" src="./images/043-planet-earth.png" height="40px">
@@ -26,7 +26,7 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" uib-collapse="main.isNavCollapsed">
-      <ul ng-if="main.isAuthenticated()">
+      <ul>
         <li class="desktop"><img class="nav-logo-img planet-logo" src="./images/043-planet-earth.png" height="40px"></li>
         <li class="nav-logo-text desktop">Adventurefy!</li>
         <li class="nav-logo-text tablet">A!</li>
