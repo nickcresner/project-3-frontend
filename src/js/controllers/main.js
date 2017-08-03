@@ -6,6 +6,7 @@ MainCtrl.$inject = ['$rootScope', '$state', '$auth', '$transitions', 'User', 'Tr
 function MainCtrl($rootScope, $state, $auth, $transitions, User, Trip) {
   const vm = this;
   vm.isAuthenticated = $auth.isAuthenticated;
+  vm.isNavCollapsed = true;
 
   $rootScope.$on('error', (e, err) => {
     vm.message = err.data.errors.join('; ');
