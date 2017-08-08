@@ -18,22 +18,28 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav>
-    <ul ng-if="main.isAuthenticated()">
-      <li class="menu-responsive">&#9776;</li>
-      <div class="dropdown">
+  <nav role="navigation" ng-if="main.isAuthenticated()">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="main.isNavCollapsed = !main.isNavCollapsed">
+        <img class="nav-logo-img planet-logo" src="./images/043-planet-earth.png" height="40px">
+        &#9776;
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="main.isNavCollapsed">
+      <ul>
         <li class="desktop"><img class="nav-logo-img planet-logo" src="./images/043-planet-earth.png" height="40px"></li>
         <li class="nav-logo-text desktop">Adventurefy!</li>
-        <li><a ui-sref="tripsIndex" ui-sref-active="active"><i class="fa fa-globe" aria-hidden="true"></i> All the trips</a></li>
-        <li><a ui-sref="tripsNew" ui-sref-active="active"><i class="fa fa-suitcase" aria-hidden="true"></i> Create a Trip</a></li>
-        <li><a ui-sref="about" ui-sref-active="active"><i class="fa fa-heart" aria-hidden="true"></i> About</a></li>
+        <li class="nav-logo-text tablet">A!</li>
+        <li><a ui-sref="tripsIndex" ui-sref-active="active" ng-click="main.isNavCollapsed = !main.isNavCollapsed"><i class="fa fa-globe" aria-hidden="true"></i> All the trips</a></li>
+        <li><a ui-sref="tripsNew" ui-sref-active="active" ng-click="main.isNavCollapsed = !main.isNavCollapsed"><i class="fa fa-suitcase" aria-hidden="true"></i> Create a Trip</a></li>
+        <li><a ui-sref="about" ui-sref-active="active" ng-click="main.isNavCollapsed = !main.isNavCollapsed"><i class="fa fa-heart" aria-hidden="true"></i> About</a></li>
         <div class="nav-left">
           <li class="desktop"><div class="small-profile-img" style="background-image:url({{ main.currentUser.image_src }})"></div></li>
-          <li class="next-link"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active">Hello, {{ main.currentUser.username }}!</a></li>
+          <li class="next-link"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active" ng-click="main.isNavCollapsed = !main.isNavCollapsed"><i class="fa fa-user-circle" aria-hidden="true"></i> Hello, {{ main.currentUser.username }}!</a></li>
           <li><a ng-click="main.logout()" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
         </div>
-      </div>
-    </ul>
+      </ul>
+    </div>
   </nav>
   <div class="message" ng-if="main.message">
     <div class="container">{{main.message}}</div>

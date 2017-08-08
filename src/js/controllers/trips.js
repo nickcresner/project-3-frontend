@@ -69,7 +69,6 @@ function TripsShowCtrl($stateParams, Trip, User, Comment, $auth, weather, budget
     facts.getFact(leg.lat, leg.lng)
     .then((response) => {
       leg.facts = response;
-      console.log(response);
     });
     return leg;
   }

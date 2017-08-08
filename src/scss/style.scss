@@ -14,7 +14,7 @@ $primary: #12A4C9;
 }
 .search-bar{
   margin: 0 auto;
-  width: 300px;
+  width: 30%;
 }
 .required{
   margin-top: 10px;
@@ -136,7 +136,6 @@ nav{
   text-align: left;
   padding: 0;
   margin: 0;
-  height: 60px;
   text-decoration: none;
   .nav-logo-text {
     font-family: 'Pacifico', cursive;
@@ -144,6 +143,9 @@ nav{
     margin-left: 5px;
     color: #83D8DD;
     text-shadow: 1px 1px black;
+  }
+  .tablet{
+    display: none;
   }
   .nav-logo-img {
     margin-left: 15px;
@@ -169,11 +171,14 @@ nav{
   }
   ul{
     padding: 0;
-    height: 50px;
+    // height: 50px;
     li{
       display: inline;
       line-height: 50px;
       margin-left: 20px;
+      .fa-user-circle{
+        display: none;
+      }
       a{
         color: #000;
         position: relative;
@@ -301,14 +306,14 @@ nav{
     padding: 0;
     p {
       text-align: left;
-      padding: 45px 10px 30px 0;
-      margin: 0 0 0 50px;
+      padding: 30px 10px 30px 0;
+      margin: 0 0 0 -10px;
     }
     .delete-comment{
       float: right;
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 8px;
+      right: -10px;
       border-radius: 50%;
       font-size: 18px;
       padding: 1px 6px;
@@ -321,6 +326,7 @@ nav{
   }
   .user-details{
     padding-top: 20px;
+    margin-left: -20px;
   }
 }
 .user-show-image{
@@ -384,10 +390,37 @@ nav{
   display: none;
 }
 
-@media only screen and (max-width: 975px){
+@media only screen and (max-width: 910px){
   nav{
     ul{
+      .nav-logo-text{
+        display: none;
+      }
+      .tablet{
+        display: inline;
+      }
+    }
+  }
+  .search-bar{
+    width: 30%;
+  }
+}
+
+
+@media only screen and (max-width: 768px){
+  nav{
+    .nav-margin{
+      margin-bottom: 300px;
+    }
+    .navbar-toggle{
+      float: left;
+      font-size: 20px;
+    }
+    ul{
       display: block;
+      .tablet{
+        display: none;
+      }
       .nav-left{
         float: none;
         margin: 0;
@@ -396,6 +429,9 @@ nav{
         display: block;
         float: none;
         text-align: left;
+        .fa-user-circle{
+          display: inline;
+        }
         .planet-logo{
           margin: 0;
         }
@@ -407,6 +443,9 @@ nav{
     .dropdown{
       display: none;
     }
+  }
+  .search-bar{
+    width: 50%;
   }
   .menu-responsive{
     display: block;

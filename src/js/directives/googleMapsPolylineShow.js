@@ -138,10 +138,14 @@ function googleMap() {
         });
         var legs = [];
         scope.legs.forEach((leg) => {
-          var latLng = {lat: leg.lat, lng: leg.lng};
+          var latLng = {lat: leg.lat, lng: leg.lng, nr: leg.leg_number};
           bounds.extend(latLng);
           legs.push(latLng);
+          legs.sort(function (a, b) {
+            return a.nr - b.nr;
+          });
         });
+        console.log(legs);
 
         var flightPath = new google.maps.Polyline({
           path: legs,
@@ -206,7 +210,6 @@ function googleMap() {
       function destroyMap(){
         console.log('destroying map...');
         removeLegsMarkers();
-        marker = null;
         map = null;
       }
     }
