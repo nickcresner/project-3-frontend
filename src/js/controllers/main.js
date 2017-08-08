@@ -19,7 +19,6 @@ function MainCtrl($rootScope, $state, $auth, $transitions, User, Trip) {
   const protectedStates = ['tripsNew', 'tripsEdit', 'tripsIndex', 'tripsShow'];
 
   $transitions.onSuccess({}, (transition) => {
-    console.log(transition.$to());
     if((!$auth.isAuthenticated() && protectedStates.includes(transition.$to().name))) {
       vm.message = 'You must be logged in to access this page.';
       return $state.go('login');

@@ -142,10 +142,10 @@ function googleMap() {
           bounds.extend(latLng);
           legs.push(latLng);
           legs.sort(function (a, b) {
-            return a.leg_number - b.leg_number;
+            return a.nr - b.nr;
           });
-
         });
+        console.log(legs);
 
         var flightPath = new google.maps.Polyline({
           path: legs,
