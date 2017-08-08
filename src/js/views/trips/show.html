@@ -44,10 +44,10 @@
         <button class="btn btn-danger" ng-click="tripsShow.toggleAttending()" ng-if="main.isAuthenticated() && tripsShow.isAttending()">Leave</button>
         <h6>Who's going:</h6>
         <div class="row" ng-repeat="attendee in tripsShow.trip.attendees">
-          <div class="col-6">
+          <div class="col-xs-6">
             <div class="profile-img-small" style="background-image:url({{ attendee.image_src }})"></div>
           </div>
-          <div class="col-6 username-box">
+          <div class="col-xs-6 username-box">
             <p class="profile-username"><a ui-sref="usersShow({ id: attendee.id })">{{ attendee.username }}</a></p>
           </div>
         </div>
