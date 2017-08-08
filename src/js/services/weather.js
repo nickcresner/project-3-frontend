@@ -13,6 +13,5 @@ function Weather($http, API_URL) {
         return response.data;
       });
   }
-  // console.log(vm.trip.legs);
   vm.getWeather = getWeather;
 }

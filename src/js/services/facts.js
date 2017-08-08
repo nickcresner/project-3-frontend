@@ -10,10 +10,8 @@ function Facts($http, API_URL) {
     return $http
       .get(`${API_URL}/facts`, { params: { lat, lng } })
       .then((response) => {
-        console.log(response.data.name);
         return response.data;
       });
   }
-  // console.log(vm.trip.legs);
   vm.getFact = getFact;
 }

@@ -24,7 +24,7 @@
       <img class="small-icon-show" src="./images/013-airplane.png" height="40px">
       <h5>Travel itinerary:</h5>
       <div>
-        <p ng-repeat="leg in tripsShow.trip.legs | orderBy: 'leg_number'">Number: {{ leg.leg_number }}, {{ leg.name }}</p>
+        <p ng-repeat="leg in tripsShow.trip.legs | orderBy: 'leg_number'">{{ leg.leg_number }}. {{ leg.name }}</p>
       </div>
     </div>
     <div class="col-lg-4">
