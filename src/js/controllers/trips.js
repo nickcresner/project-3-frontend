@@ -133,6 +133,7 @@ TripsNewCtrl.$inject = ['$state', 'Trip', 'Leg', 'User', '$auth'];
 function TripsNewCtrl($state, Trip, Leg, User, $auth){
   const vm = this;
   vm.users = User.query();
+  vm.number = 0;
 
   vm.legs = [];
 
@@ -147,6 +148,8 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
       .then((trip) => {
         vm.legs.forEach((leg) => {
           leg.trip_id = trip.id;
+          leg.leg_number = vm.number += 1;
+          console.log(leg.leg_number);
           Leg.
           save(leg)
           .$promise
@@ -174,6 +177,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
 TripsEditCtrl.$inject = ['Trip', 'Leg', 'User', '$stateParams', '$state'];
 function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   const vm = this;
+  vm.number = 0;
   Trip.get($stateParams)
     .$promise
     .then((trip) => {
