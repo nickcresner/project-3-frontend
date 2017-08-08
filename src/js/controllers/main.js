@@ -17,7 +17,6 @@ function MainCtrl($rootScope, $state, $auth, $transitions, User, Trip) {
   });
 
   const protectedStates = ['tripsNew', 'tripsEdit', 'tripsIndex', 'tripsShow'];
-  const editPage = 'tripsEdit';
 
   $transitions.onSuccess({}, (transition) => {
     console.log(transition.$to());
@@ -25,11 +24,6 @@ function MainCtrl($rootScope, $state, $auth, $transitions, User, Trip) {
       vm.message = 'You must be logged in to access this page.';
       return $state.go('login');
     }
-    // if(($auth.isAuthenticated() && $auth.getPayload().id !== editPage.user.id && editPage.includes(transition.$to().name))){
-    //   vm.message = 'This is not your source, you cannot edit this.';
-    //   return $state.go('tripsIndex');
-    // }
-
     if(transition.$to().name === 'tripsEdit') {
       Trip.get($state.params)
       .$promise
