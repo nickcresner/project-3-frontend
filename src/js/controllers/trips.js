@@ -134,6 +134,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
   vm.users = User.query();
 
   vm.legs = [];
+  vm.number = 0;
 
   vm.create = tripsCreate;
 
@@ -146,6 +147,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
       .then((trip) => {
         vm.legs.forEach((leg) => {
           leg.trip_id = trip.id;
+          leg.leg_number = vm.number += 1;
           Leg.
           save(leg)
           .$promise
