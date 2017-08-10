@@ -134,6 +134,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
   vm.users = User.query();
 
   vm.legs = [];
+  vm.number = 0;
 
   vm.create = tripsCreate;
 
@@ -146,6 +147,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
       .then((trip) => {
         vm.legs.forEach((leg) => {
           leg.trip_id = trip.id;
+          leg.leg_number = vm.number += 1;
           Leg.
           save(leg)
           .$promise
@@ -173,6 +175,7 @@ function TripsNewCtrl($state, Trip, Leg, User, $auth){
 TripsEditCtrl.$inject = ['Trip', 'Leg', 'User', '$stateParams', '$state'];
 function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   const vm = this;
+  vm.number = 0;
   Trip.get($stateParams)
     .$promise
     .then((trip) => {
@@ -194,13 +197,17 @@ function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   vm.update = tripsUpdate;
 
   function addLeg(){
+    vm.number = 0;
     vm.newLeg.trip_id = vm.trip.id;
-    console.log('About to add:', vm.newLeg);
+    vm.newLeg.leg_number = vm.trip.legs[vm.trip.legs.length - 1].leg_number += 1;
+    vm.trip.legs.forEach((leg) => {
+      console.log(`Hello I am leg number ${leg.leg_number}`);
+      leg.leg_number = vm.number += 1;
+    });
     Leg.
     save(vm.newLeg)
     .$promise
     .then((leg) => {
-      console.log('Leg added:', leg);
       vm.trip.legs.push(leg);
       vm.trip.leg_ids.push(leg.id);
       vm.newLeg = {};
@@ -209,12 +216,17 @@ function TripsEditCtrl(Trip, Leg, User, $stateParams, $state) {
   vm.addLeg = addLeg;
 
   function deleteLeg(leg){
+    vm.number = 0;
     Leg.delete({ id: leg.id })
     .$promise
     .then(() => {
       const legsIndex = vm.trip.legs.indexOf(leg);
       vm.trip.legs.splice(legsIndex, 1);
       vm.trip.leg_ids.splice(legsIndex, 1);
+      vm.trip.legs.forEach((leg) => {
+        console.log(`Hello I am leg number ${leg.leg_number}`);
+        leg.leg_number = vm.number += 1;
+      });
     });
 
   }
