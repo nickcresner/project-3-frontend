@@ -145,7 +145,6 @@ function googleMap() {
             return a.nr - b.nr;
           });
         });
-        console.log(legs);
 
         var flightPath = new google.maps.Polyline({
           path: legs,
@@ -208,7 +207,6 @@ function googleMap() {
       }
 
       function destroyMap(){
-        console.log('destroying map...');
         removeLegsMarkers();
         map = null;
       }
